@@ -1,7 +1,33 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 import { lightTheme } from './lightTheme';
 
+export const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  
+  * {
+    box-sizing: border-box;  
+  }  
+
+  html, body {
+    margin: 0;
+    background-color: ${({ theme }) => theme.colors.background.primary};
+    font-family: ${({ theme }) => theme.fontFamily};
+    font-size: ${({ theme }) => theme.fontSize.text.regular};
+    color: ${({ theme }) => theme.colors.text.primary};
+  }
+
+  html {
+    overflow-y: scroll;
+  }
+`;
+
 export const Theme: React.FC = ({ children }) => {
-  return <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
 };
