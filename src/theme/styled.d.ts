@@ -29,5 +29,11 @@ declare module 'styled-components' {
         extraLarge: string;
       };
     };
+    boxShadow: string;
+    borderRadius: {
+      small: string;
+      regular: string;
+      large: string;
+    };
   }
 }

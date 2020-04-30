@@ -28,4 +28,10 @@ export const lightTheme: DefaultTheme = {
       extraLarge: '18px',
     },
   },
+  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+  borderRadius: {
+    small: '6px',
+    regular: '10px',
+    large: '20px',
+  },
 };
