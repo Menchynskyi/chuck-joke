@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     background-color: ${({ theme }) => theme.colors.background.primary};
     font-family: ${({ theme }) => theme.fontFamily};
-    font-size: ${({ theme }) => theme.fontSize.text.regular};
+    font-size: ${({ theme }) => theme.fontSize.text.extraLarge};
     color: ${({ theme }) => theme.colors.text.primary};
   }
 

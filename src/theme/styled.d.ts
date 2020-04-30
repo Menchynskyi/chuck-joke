@@ -11,11 +11,22 @@ declare module 'styled-components' {
         primary: string;
         secondary: string;
       };
+      red: string;
+      blue: string;
     };
     fontFamily: string;
     fontSize: {
-      text: {
+      heading: {
+        small: string;
         regular: string;
+        large: string;
+      };
+      text: {
+        extraSmall: string;
+        small: string;
+        regular: string;
+        large: string;
+        extraLarge: string;
       };
     };
   }

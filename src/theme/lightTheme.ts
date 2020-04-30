@@ -11,10 +11,21 @@ export const lightTheme: DefaultTheme = {
       primary: '#333333',
       secondary: '#ABABAB',
     },
+    red: '#FF6767',
+    blue: '#8EA7FF',
   },
   fontSize: {
+    heading: {
+      small: '20px',
+      regular: '24px',
+      large: '32px',
+    },
     text: {
-      regular: '18px',
+      extraSmall: '10px',
+      small: '12px',
+      regular: '14px',
+      large: '16px',
+      extraLarge: '18px',
     },
   },
 };
