@@ -1,4 +1,5 @@
 import { DefaultTheme } from 'styled-components';
+import { size } from './breakpoints';
 
 export const lightTheme: DefaultTheme = {
   fontFamily: `'Roboto', 'Arial', sans-serif`,
@@ -33,5 +34,18 @@ export const lightTheme: DefaultTheme = {
     small: '6px',
     regular: '10px',
     large: '20px',
+  },
+  device: {
+    mobileS: `only screen and (max-width: ${size.mobile - 1}px)`,
+    mobile: `only screen and (max-width: ${size.tablet - 1}px)`,
+    tablet: `only screen and (min-width: ${size.tablet}px)`,
+    tabletOnly: `only screen and (min-width: ${
+      size.tablet
+    }px) and (max-width: ${size.laptop - 1}px)`,
+    laptop: `only screen and (min-width: ${size.laptop}px)`,
+    laptopOnly: `only screen and (min-width: ${
+      size.laptop
+    }px) and (max-width: ${size.desktop - 1}px)`,
+    desktop: `only screen and (min-width: ${size.desktop}px)`,
   },
 };

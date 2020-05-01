@@ -35,5 +35,14 @@ declare module 'styled-components' {
       regular: string;
       large: string;
     };
+    device: {
+      mobileS: string;
+      mobile: string;
+      tablet: string;
+      tabletOnly: string;
+      laptop: string;
+      laptopOnly: string;
+      desktop: string;
+    };
   }
 }
