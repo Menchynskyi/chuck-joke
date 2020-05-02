@@ -1,1 +1,1 @@
-export { JokesProvider } from './jokes';
+export * from './jokes';

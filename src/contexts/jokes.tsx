@@ -8,7 +8,7 @@ type State = {
   isLoaded: boolean;
 };
 
-type Action =
+export type Action =
   | { type: 'getRandomJoke'; payload: Joke }
   | { type: 'startFetching' }
   | { type: 'errorFetching' };

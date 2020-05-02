@@ -1,0 +1,1 @@
+export { getRandomJoke } from './jokes';
