@@ -7,6 +7,7 @@ type State = {
   isError: boolean;
   isLoading: boolean;
   isLoaded: boolean;
+  categories: string[];
 };
 
 export type Action =
@@ -14,7 +15,8 @@ export type Action =
   | { type: 'startFetching' }
   | { type: 'errorFetching' }
   | { type: 'likeJoke'; payload: Joke }
-  | { type: 'dislikeJoke'; payload: Joke };
+  | { type: 'dislikeJoke'; payload: Joke }
+  | { type: 'fetchCategories'; payload: string[] };
 
 type JokesContextState = {
   state: State;
@@ -25,6 +27,7 @@ type JokesProviderProps = { children: React.ReactNode };
 
 const initialState: State = {
   jokeList: [],
+  categories: [],
   favouriteList: JSON.parse(localStorage.getItem('favouriteList') || '[]'),
   isError: false,
   isLoaded: false,
@@ -87,6 +90,12 @@ const jokesReducer = (state: State, action: Action) => {
         ...state,
         favouriteList,
         jokeList,
+      };
+    }
+    case 'fetchCategories': {
+      return {
+        ...state,
+        categories: action.payload,
       };
     }
     default: {
