@@ -8,7 +8,7 @@ export const JokeList: React.FC = () => {
   const { dispatch, state } = useJokesContext();
   useEffect(() => {
     getRandomJoke(dispatch);
-  }, []);
+  }, [dispatch]);
   return (
     <JokeListStyled>
       {state.jokeList &&

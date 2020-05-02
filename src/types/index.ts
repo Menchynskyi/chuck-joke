@@ -2,6 +2,6 @@ export type Joke = {
   id: string;
   text: string;
   url: string;
-  updateTime: string;
+  updateTime: number;
   category?: string;
 };

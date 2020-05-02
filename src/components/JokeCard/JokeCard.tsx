@@ -49,7 +49,7 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
         <InfoContainer>
           <TimeContainer>
             <span>Last update: </span>
-            <span>{joke.updateTime}</span>
+            <span>{`${joke.updateTime} hours ago`}</span>
           </TimeContainer>
           {joke.category && <Category>{joke.category}</Category>}
         </InfoContainer>
