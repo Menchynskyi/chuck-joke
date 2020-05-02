@@ -25,7 +25,7 @@ type JokesProviderProps = { children: React.ReactNode };
 
 const initialState: State = {
   jokeList: [],
-  favouriteList: [],
+  favouriteList: JSON.parse(localStorage.getItem('favourite') || '[]'),
   isError: false,
   isLoaded: false,
   isLoading: false,
