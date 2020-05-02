@@ -40,6 +40,7 @@ export const LikeContainer = styled.div`
 `;
 
 export const InnerContainer = styled.div`
+  flex-grow: 1;
   display: flex;
   flex-flow: column wrap;
   padding-left: 20px;
