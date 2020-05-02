@@ -9,6 +9,7 @@ export const JokeList: React.FC = () => {
 
   useEffect(() => {
     getRandomJoke(dispatch, state.favouriteList);
+    // eslint-disable-next-line
   }, [dispatch]);
 
   return (
