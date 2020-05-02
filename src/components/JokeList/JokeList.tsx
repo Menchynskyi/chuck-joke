@@ -12,27 +12,19 @@ export const JokeList: React.FC = () => {
   return (
     <>
       <JokeListStyled>
-        {state.jokeList &&
+        {state.isLoaded &&
           state.jokeList.map((joke) => (
             <JokeListItem key={joke.id}>
-              <JokeCard
-                isLiked={state.favouriteList.some(({ id }) => id === joke.id)}
-                isLarge
-                joke={joke}
-              />
+              <JokeCard isLarge joke={joke} />
             </JokeListItem>
           ))}
       </JokeListStyled>
       <>
-        {state.favouriteList &&
-          state.favouriteList.map((joke) => (
-            <JokeListItem key={joke.id}>
-              <JokeCard
-                isLiked={state.favouriteList.some(({ id }) => id === joke.id)}
-                joke={joke}
-              />
-            </JokeListItem>
-          ))}
+        {state.favouriteList.map((joke) => (
+          <JokeListItem key={joke.id}>
+            <JokeCard joke={joke} />
+          </JokeListItem>
+        ))}
       </>
     </>
   );

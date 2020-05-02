@@ -21,7 +21,6 @@ import { useJokesDispatch } from '../../contexts';
 type JokeCardProps = {
   joke: Joke;
   isLarge?: boolean;
-  isLiked?: boolean;
 };
 
 export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
@@ -57,7 +56,7 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
             <span>Last update: </span>
             <span>{`${joke.updateTime} hours ago`}</span>
           </TimeContainer>
-          {!isLarge && joke.category && <Category>{joke.category}</Category>}
+          {isLarge && joke.category && <Category>{joke.category}</Category>}
         </InfoContainer>
       </InnerContainer>
     </JokeContainer>
@@ -66,5 +65,4 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
 
 JokeCard.defaultProps = {
   isLarge: false,
-  isLiked: false,
 };
