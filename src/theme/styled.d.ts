@@ -29,6 +29,7 @@ declare module 'styled-components' {
         extraLarge: string;
       };
     };
+    hoverOpacity: string;
     boxShadow: string;
     borderRadius: {
       small: string;
