@@ -7,7 +7,7 @@ export const FavouriteList = () => {
   const { favouriteList } = useJokesState();
 
   useEffect(() => {
-    localStorage.setItem('favourite', JSON.stringify(favouriteList));
+    localStorage.setItem('favouriteList', JSON.stringify(favouriteList));
   }, [favouriteList]);
 
   return (
