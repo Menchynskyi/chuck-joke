@@ -1,0 +1,1 @@
+export { JokeCard } from './JokeCard';
