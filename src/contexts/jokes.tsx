@@ -2,7 +2,8 @@ import React, { createContext, useReducer, useContext } from 'react';
 import { Joke } from '../types';
 
 type State = {
-  jokeList: Joke[] | null;
+  jokeList: Joke[];
+  favouriteList: Joke[];
   isError: boolean;
   isLoading: boolean;
   isLoaded: boolean;
@@ -11,7 +12,9 @@ type State = {
 export type Action =
   | { type: 'getRandomJoke'; payload: Joke }
   | { type: 'startFetching' }
-  | { type: 'errorFetching' };
+  | { type: 'errorFetching' }
+  | { type: 'likeJoke'; payload: Joke }
+  | { type: 'dislikeJoke'; payload: Joke };
 
 type JokesContextState = {
   state: State;
@@ -21,7 +24,8 @@ type JokesContextState = {
 type JokesProviderProps = { children: React.ReactNode };
 
 const initialState: State = {
-  jokeList: null,
+  jokeList: [],
+  favouriteList: [],
   isError: false,
   isLoaded: false,
   isLoading: false,
@@ -48,6 +52,41 @@ const jokesReducer = (state: State, action: Action) => {
       return {
         ...state,
         isError: true,
+      };
+    }
+    case 'likeJoke': {
+      const likedJoke = { ...action.payload, isLiked: true };
+      const jokeId = state.jokeList.findIndex(
+        ({ id }) => id === action.payload.id
+      );
+      const jokeList = [
+        ...state.jokeList.slice(0, jokeId),
+        likedJoke,
+        ...state.jokeList.slice(jokeId + 1),
+      ];
+      return {
+        ...state,
+        jokeList,
+        favouriteList: [likedJoke, ...state.favouriteList],
+      };
+    }
+    case 'dislikeJoke': {
+      const dislikedJoke = { ...action.payload, isLiked: false };
+      const jokeId = state.jokeList.findIndex(
+        ({ id }) => id === action.payload.id
+      );
+      const jokeList = [
+        ...state.jokeList.slice(0, jokeId),
+        dislikedJoke,
+        ...state.jokeList.slice(jokeId + 1),
+      ];
+      const favouriteList = state.favouriteList.filter(
+        ({ id }) => id !== action.payload.id
+      );
+      return {
+        ...state,
+        favouriteList,
+        jokeList,
       };
     }
     default: {

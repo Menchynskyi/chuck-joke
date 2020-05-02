@@ -16,6 +16,7 @@ import {
 import { LikeButton } from '../LikeButton';
 import { ReactComponent as MessageIcon } from './message-icon.svg';
 import { ReactComponent as LinkIcon } from './link-icon.svg';
+import { useJokesDispatch } from '../../contexts';
 
 type JokeCardProps = {
   joke: Joke;
@@ -24,8 +25,13 @@ type JokeCardProps = {
 };
 
 export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
+  const dispatch = useJokesDispatch();
   const handleToggle = () => {
-    console.log('toggled');
+    if (joke.isLiked) {
+      dispatch({ type: 'dislikeJoke', payload: joke });
+    } else {
+      dispatch({ type: 'likeJoke', payload: joke });
+    }
   };
   return (
     <JokeContainer isLarge={isLarge}>
@@ -36,7 +42,7 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
       </MessageIconContainer>
       <InnerContainer>
         <LikeContainer>
-          <LikeButton onToggle={handleToggle} />
+          <LikeButton isLiked={joke.isLiked} onToggle={handleToggle} />
         </LikeContainer>
         <IDContainer>
           <span>ID: </span>
@@ -51,7 +57,7 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
             <span>Last update: </span>
             <span>{`${joke.updateTime} hours ago`}</span>
           </TimeContainer>
-          {joke.category && <Category>{joke.category}</Category>}
+          {!isLarge && joke.category && <Category>{joke.category}</Category>}
         </InfoContainer>
       </InnerContainer>
     </JokeContainer>

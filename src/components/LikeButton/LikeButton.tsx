@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Like } from '../Like';
 import { Button } from './LikeButtonStyled';
 
 type LikeButton = {
   onToggle: () => void;
+  isLiked: boolean;
 };
 
-export const LikeButton: React.FC<LikeButton> = ({ onToggle }) => {
-  const [isLiked, setIsLiked] = useState(false);
+export const LikeButton: React.FC<LikeButton> = ({ onToggle, isLiked }) => {
   const handleClick = () => {
-    setIsLiked((prev) => !prev);
     onToggle();
   };
   return (

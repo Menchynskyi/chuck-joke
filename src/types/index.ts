@@ -3,5 +3,6 @@ export type Joke = {
   text: string;
   url: string;
   updateTime: number;
+  isLiked: boolean;
   category?: string;
 };
