@@ -24,6 +24,9 @@ type JokeCardProps = {
 };
 
 export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
+  const handleToggle = () => {
+    console.log('toggled');
+  };
   return (
     <JokeContainer isLarge={isLarge}>
       <MessageIconContainer>
@@ -33,11 +36,7 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
       </MessageIconContainer>
       <InnerContainer>
         <LikeContainer>
-          <LikeButton
-            onToggle={() => {
-              console.log('test');
-            }}
-          />
+          <LikeButton onToggle={handleToggle} />
         </LikeContainer>
         <IDContainer>
           <span>ID: </span>

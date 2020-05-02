@@ -1,0 +1,1 @@
+export { JokesProvider } from './jokes';
