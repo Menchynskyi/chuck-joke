@@ -12,6 +12,8 @@ type State = {
 
 export type Action =
   | { type: 'getRandomJoke'; payload: Joke }
+  | { type: 'getJokeByCategory'; payload: Joke }
+  | { type: 'getJokeBySearch'; payload: Joke[] }
   | { type: 'startFetching' }
   | { type: 'errorFetching' }
   | { type: 'likeJoke'; payload: Joke }
@@ -43,6 +45,24 @@ const jokesReducer = (state: State, action: Action) => {
         isLoading: false,
         isError: false,
         jokeList: [action.payload],
+      };
+    }
+    case 'getJokeByCategory': {
+      return {
+        ...state,
+        isLoaded: true,
+        isLoading: false,
+        isError: false,
+        jokeList: [action.payload],
+      };
+    }
+    case 'getJokeBySearch': {
+      return {
+        ...state,
+        isLoaded: true,
+        isLoading: false,
+        isError: false,
+        jokeList: action.payload,
       };
     }
     case 'startFetching': {

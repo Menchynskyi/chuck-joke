@@ -1,21 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { JokeCard } from '../JokeCard';
-import { useJokesContext } from '../../contexts';
+import { useJokesState } from '../../contexts';
 import { JokeListItem, JokeListStyled } from './JokeListStyled';
-import { getRandomJoke } from '../../api';
 
 export const JokeList: React.FC = () => {
-  const { dispatch, state } = useJokesContext();
-
-  useEffect(() => {
-    getRandomJoke(dispatch, state.favouriteList);
-    // eslint-disable-next-line
-  }, [dispatch]);
+  const { isLoaded, jokeList } = useJokesState();
 
   return (
     <JokeListStyled>
-      {state.isLoaded &&
-        state.jokeList.map((joke) => (
+      {isLoaded &&
+        jokeList.map((joke) => (
           <JokeListItem key={joke.id}>
             <JokeCard isLarge joke={joke} />
           </JokeListItem>

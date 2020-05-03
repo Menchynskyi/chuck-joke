@@ -9,7 +9,7 @@ import {
   CategoryButton,
 } from './JokeFormStyled';
 import { useJokesDispatch, useJokesState } from '../../contexts';
-import { fetchCategories } from '../../api';
+import { fetchCategories, getJokeByCategory, getRandomJoke } from '../../api';
 
 type JokeSearchType = 'random' | 'byCategory' | 'bySearch';
 
@@ -27,7 +27,7 @@ export const JokeForm = () => {
   });
 
   const dispatch = useJokesDispatch();
-  const { categories } = useJokesState();
+  const { categories, favouriteList } = useJokesState();
 
   useEffect(() => {
     fetchCategories(dispatch);
@@ -39,6 +39,19 @@ export const JokeForm = () => {
   };
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    switch (formState.type) {
+      case 'random': {
+        getRandomJoke(dispatch, favouriteList);
+        break;
+      }
+      case 'byCategory': {
+        getJokeByCategory(dispatch, favouriteList, formState.category);
+        break;
+      }
+      default: {
+        throw new Error('Something went wrong');
+      }
+    }
   };
 
   const isRandom = formState.type === 'random';
