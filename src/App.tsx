@@ -1,6 +1,6 @@
 import React from 'react';
 import { JokesProvider } from './contexts';
-import { JokeList, FavouriteList } from './components';
+import { JokeList, FavouriteList, JokeForm } from './components';
 import {
   MainContainer,
   AsideContainer,
@@ -19,6 +19,7 @@ export const App: React.FC = () => {
         <SectionStyled>
           <SectionTitle>Hey!</SectionTitle>
           <TextContainer>Let’s try to find a joke for you:</TextContainer>
+          <JokeForm />
           <JokeList />
         </SectionStyled>
       </MainContainer>

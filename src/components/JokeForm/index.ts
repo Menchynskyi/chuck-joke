@@ -1,0 +1,1 @@
+export { JokeForm } from './JokeForm';
