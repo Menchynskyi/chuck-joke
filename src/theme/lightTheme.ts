@@ -13,7 +13,10 @@ export const lightTheme: DefaultTheme = {
       secondary: '#ABABAB',
     },
     red: '#FF6767',
-    blue: '#8EA7FF',
+    blue: {
+      primary: '#8EA7FF',
+      secondary: '#7291FF',
+    },
   },
   fontSize: {
     heading: {

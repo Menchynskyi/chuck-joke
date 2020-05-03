@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import {
+  LabelStyled,
+  SubmitButton,
+  FormStyled,
+  SearchInput,
+} from './JokeFormStyled';
 
 export const JokeForm = () => {
   const [radioState, setRadioState] = useState('random');
@@ -9,8 +15,8 @@ export const JokeForm = () => {
     event.preventDefault();
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="random">
+    <FormStyled onSubmit={handleSubmit}>
+      <LabelStyled htmlFor="random">
         <input
           id="random"
           type="radio"
@@ -20,8 +26,8 @@ export const JokeForm = () => {
           onChange={handleRadioChange}
         />
         Random
-      </label>
-      <label htmlFor="category">
+      </LabelStyled>
+      <LabelStyled htmlFor="category">
         <input
           id="category"
           type="radio"
@@ -31,8 +37,8 @@ export const JokeForm = () => {
           onChange={handleRadioChange}
         />
         From categories
-      </label>
-      <label htmlFor="search">
+      </LabelStyled>
+      <LabelStyled htmlFor="search">
         <input
           id="search"
           type="radio"
@@ -42,8 +48,11 @@ export const JokeForm = () => {
           onChange={handleRadioChange}
         />
         Search
-      </label>
-      <button type="submit">Get a joke</button>
-    </form>
+      </LabelStyled>
+      {radioState === 'search' && (
+        <SearchInput placeholder="Free text search..." />
+      )}
+      <SubmitButton type="submit">Get a joke</SubmitButton>
+    </FormStyled>
   );
 };

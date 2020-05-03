@@ -55,7 +55,7 @@ export const IDContainer = styled.div`
 `;
 
 export const JokeLink = styled.a`
-  color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.blue.primary};
 
   & > svg {
     margin-left: 5px;

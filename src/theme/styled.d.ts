@@ -12,7 +12,10 @@ declare module 'styled-components' {
         secondary: string;
       };
       red: string;
-      blue: string;
+      blue: {
+        primary: string;
+        secondary: string;
+      };
     };
     fontFamily: string;
     fontSize: {
