@@ -45,5 +45,6 @@ declare module 'styled-components' {
       laptopOnly: string;
       desktop: string;
     };
+    letterSpacing: string;
   }
 }

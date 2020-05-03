@@ -89,6 +89,6 @@ export const Category = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: ${({ theme }) => theme.fontSize.text.extraSmall};
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing};
   font-weight: 500;
 `;
