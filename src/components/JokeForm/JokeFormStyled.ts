@@ -56,3 +56,41 @@ export const SearchInput = styled.input`
     outline: none;
   }
 `;
+
+export const CategoriesList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 20px 0;
+  padding: 0;
+`;
+
+export const CategoriesListItem = styled.li`
+  list-style: none;
+  margin: 10px 10px 0 0;
+`;
+
+export const CategoryButton = styled.button<{ isActive: boolean }>`
+  padding: 6px 15px;
+  background-color: ${({ theme, isActive }) =>
+    isActive
+      ? theme.colors.background.secondary
+      : theme.colors.background.primary};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.text.primary : theme.colors.text.secondary};
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSize.text.small};
+  text-transform: uppercase;
+  line-height: 16px;
+  letter-spacing: ${({ theme }) => theme.letterSpacing};
+  border: 2px solid ${({ theme }) => theme.colors.background.secondary};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+
+  &:hover {
+    cursor: pointer;
+    opacity: ${({ theme }) => theme.hoverOpacity};
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
