@@ -17,6 +17,7 @@ export const LabelStyled = styled.label`
 `;
 
 export const SubmitButton = styled.button`
+  margin-top: 10px;
   padding: 10px 40px;
   background: ${({ theme }) =>
     `linear-gradient(92.01deg, ${theme.colors.blue.primary} 0%, ${theme.colors.blue.secondary} 100%)`};
@@ -39,9 +40,8 @@ export const SubmitButton = styled.button`
 `;
 
 export const SearchInput = styled.input`
-  display: block;
   width: 100%;
-  margin: 10px 0 20px 0;
+  margin: 10px 0;
   padding: 10px 15px;
   font-size: ${({ theme }) => theme.fontSize.text.large};
   color: ${({ theme }) => theme.colors.text.primary};
