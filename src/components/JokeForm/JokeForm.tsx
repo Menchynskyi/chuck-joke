@@ -9,7 +9,12 @@ import {
   CategoryButton,
 } from './JokeFormStyled';
 import { useJokesDispatch, useJokesState } from '../../contexts';
-import { fetchCategories, getJokeByCategory, getRandomJoke } from '../../api';
+import {
+  fetchCategories,
+  getJokeByCategory,
+  getRandomJoke,
+  getJokeBySearch,
+} from '../../api';
 
 type JokeSearchType = 'random' | 'byCategory' | 'bySearch';
 
@@ -46,6 +51,11 @@ export const JokeForm = () => {
       }
       case 'byCategory': {
         getJokeByCategory(dispatch, favouriteList, formState.category);
+        break;
+      }
+      case 'bySearch': {
+        if (formState.search.length < 3) return;
+        getJokeBySearch(dispatch, favouriteList, formState.search);
         break;
       }
       default: {

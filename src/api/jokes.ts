@@ -60,20 +60,31 @@ export const getJokeBySearch = async (
   favouriteList: Joke[],
   searchInput: string
 ) => {
+  if (!searchInput) return;
   dispatch({ type: 'startFetching' });
   try {
-    const { data } = await axios.get('https://api.chucknorris.io/jokes/random');
-    const lastUpdateTime = calculateDateDiff(Date.now(), data.updated_at);
-    const isLiked = favouriteList.some(({ id }) => id === data.id);
-    const jokeData: Joke = {
-      id: data.id,
-      url: data.url,
-      text: data.value,
-      updateTime: lastUpdateTime,
-      category: data.categories[0],
-      isLiked,
-    };
-    dispatch({ type: 'getRandomJoke', payload: jokeData });
+    const { data } = await axios.get(
+      `https://api.chucknorris.io/jokes/search?query=${searchInput}`
+    );
+    const jokeList: Joke[] = data.result.map(
+      (jokeData: { [key: string]: string }) => {
+        const lastUpdateTime = calculateDateDiff(
+          Date.now(),
+          jokeData.updated_at
+        );
+        const isLiked = favouriteList.some(({ id }) => id === jokeData.id);
+        return {
+          id: jokeData.id,
+          url: jokeData.url,
+          text: jokeData.value,
+          updateTime: lastUpdateTime,
+          category: jokeData.categories[0],
+          isLiked,
+        };
+      }
+    );
+    const shortJokeList = jokeList.slice(0, 5);
+    dispatch({ type: 'getJokesBySearch', payload: shortJokeList });
   } catch (error) {
     dispatch({ type: 'errorFetching' });
     throw new Error(error.message);
