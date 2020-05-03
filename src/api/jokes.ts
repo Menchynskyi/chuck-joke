@@ -23,5 +23,6 @@ export const getRandomJoke = async (
     dispatch({ type: 'getRandomJoke', payload: jokeData });
   } catch (error) {
     dispatch({ type: 'errorFetching' });
+    throw new Error(error.message);
   }
 };

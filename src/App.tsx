@@ -1,13 +1,17 @@
 import React from 'react';
 import { JokesProvider } from './contexts';
 import { JokeList, FavouriteList } from './components';
+import { MainContainer, AsideContainer } from './AppStyled';
 
 export const App: React.FC = () => {
   return (
     <JokesProvider>
-      <div>Chuck Joke App</div>
-      <JokeList />
-      <FavouriteList />
+      <MainContainer>
+        <JokeList />
+      </MainContainer>
+      <AsideContainer>
+        <FavouriteList />
+      </AsideContainer>
     </JokesProvider>
   );
 };
