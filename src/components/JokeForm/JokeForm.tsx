@@ -7,6 +7,7 @@ import {
   CategoriesList,
   CategoriesListItem,
   CategoryButton,
+  RadioInput,
 } from './JokeFormStyled';
 import { useJokesDispatch, useJokesState } from '../../contexts';
 import {
@@ -95,8 +96,8 @@ export const JokeForm = () => {
 
   return (
     <FormStyled onSubmit={handleSubmit}>
-      <LabelStyled htmlFor="random">
-        <input
+      <LabelStyled isChecked={isRandom} htmlFor="random">
+        <RadioInput
           id="random"
           type="radio"
           name="random"
@@ -106,8 +107,8 @@ export const JokeForm = () => {
         />
         Random
       </LabelStyled>
-      <LabelStyled htmlFor="byCategory">
-        <input
+      <LabelStyled isChecked={isByCategory} htmlFor="byCategory">
+        <RadioInput
           id="byCategory"
           type="radio"
           name="byCategory"
@@ -120,8 +121,8 @@ export const JokeForm = () => {
       {isByCategory && (
         <CategoriesList>{renderCategories(categories)}</CategoriesList>
       )}
-      <LabelStyled htmlFor="bySearch">
-        <input
+      <LabelStyled isChecked={isBySearch} htmlFor="bySearch">
+        <RadioInput
           id="bySearch"
           type="radio"
           name="bySearch"

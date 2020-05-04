@@ -4,8 +4,14 @@ export const FormStyled = styled.form`
   margin-bottom: 40px;
 `;
 
-export const LabelStyled = styled.label`
+export const RadioInput = styled.input`
+  display: none;
+`;
+
+export const LabelStyled = styled.label<{ isChecked: boolean }>`
+  position: relative;
   display: block;
+  padding-left: 35px;
   margin-bottom: 10px;
   font-size: ${({ theme }) => theme.fontSize.text.extraLarge};
   color: ${({ theme }) => theme.colors.text.primary};
@@ -13,6 +19,31 @@ export const LabelStyled = styled.label`
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  &:before {
+    top: 3px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid ${({ theme }) => theme.colors.text.primary};
+  }
+
+  &:after {
+    top: 8px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: ${({ theme, isChecked }) =>
+      isChecked ? theme.colors.text.primary : 'transparent'};
   }
 `;
 
