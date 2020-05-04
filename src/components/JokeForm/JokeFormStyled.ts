@@ -5,7 +5,14 @@ export const FormStyled = styled.form`
 `;
 
 export const RadioInput = styled.input`
-  display: none;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 `;
 
 export const LabelStyled = styled.label<{ isChecked: boolean }>`

@@ -17,7 +17,7 @@ import {
   getJokeBySearch,
 } from '../../api';
 
-type JokeSearchType = 'random' | 'byCategory' | 'bySearch';
+type JokeSearchType = 'random' | 'category' | 'search';
 
 type FormState = {
   type: JokeSearchType;
@@ -50,11 +50,11 @@ export const JokeForm = () => {
         getRandomJoke(dispatch, favouriteList);
         break;
       }
-      case 'byCategory': {
+      case 'category': {
         getJokeByCategory(dispatch, favouriteList, formState.category);
         break;
       }
-      case 'bySearch': {
+      case 'search': {
         if (formState.search.length < 3) return;
         getJokeBySearch(dispatch, favouriteList, formState.search);
         break;
@@ -66,8 +66,8 @@ export const JokeForm = () => {
   };
 
   const isRandom = formState.type === 'random';
-  const isByCategory = formState.type === 'byCategory';
-  const isBySearch = formState.type === 'bySearch';
+  const isByCategory = formState.type === 'category';
+  const isBySearch = formState.type === 'search';
 
   const renderCategories = (categoriesArray: string[]) => {
     return categoriesArray.map((category) => {
@@ -107,12 +107,12 @@ export const JokeForm = () => {
         />
         Random
       </LabelStyled>
-      <LabelStyled isChecked={isByCategory} htmlFor="byCategory">
+      <LabelStyled isChecked={isByCategory} htmlFor="category">
         <RadioInput
-          id="byCategory"
+          id="category"
           type="radio"
-          name="byCategory"
-          value="byCategory"
+          name="category"
+          value="category"
           checked={isByCategory}
           onChange={handleRadioChange}
         />
@@ -121,12 +121,12 @@ export const JokeForm = () => {
       {isByCategory && (
         <CategoriesList>{renderCategories(categories)}</CategoriesList>
       )}
-      <LabelStyled isChecked={isBySearch} htmlFor="bySearch">
+      <LabelStyled isChecked={isBySearch} htmlFor="search">
         <RadioInput
-          id="bySearch"
+          id="search"
           type="radio"
-          name="bySearch"
-          value="bySearch"
+          name="search"
+          value="search"
           checked={isBySearch}
           onChange={handleRadioChange}
         />
