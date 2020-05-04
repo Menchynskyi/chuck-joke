@@ -20,7 +20,7 @@ export const JokeList: React.FC = () => {
       {isLoaded &&
         jokeList.map((joke) => (
           <JokeListItem key={joke.id}>
-            <JokeCard isLarge joke={joke} />
+            <JokeCard joke={joke} />
           </JokeListItem>
         ))}
     </JokeListStyled>

@@ -25,7 +25,7 @@ export const FavouriteList = () => {
     <FavouriteListStyled>
       {favouriteList.map((joke) => (
         <FavouriteListItem key={joke.id}>
-          <JokeCard joke={joke} />
+          <JokeCard isFavourite joke={joke} />
         </FavouriteListItem>
       ))}
     </FavouriteListStyled>

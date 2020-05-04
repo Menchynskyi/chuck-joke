@@ -20,11 +20,12 @@ import { useJokesDispatch } from '../../contexts';
 
 type JokeCardProps = {
   joke: Joke;
-  isLarge?: boolean;
+  isFavourite?: boolean;
 };
 
-export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
+export const JokeCard: React.FC<JokeCardProps> = ({ isFavourite, joke }) => {
   const dispatch = useJokesDispatch();
+
   const handleToggle = () => {
     if (joke.isLiked) {
       dispatch({ type: 'dislikeJoke', payload: joke });
@@ -32,10 +33,11 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
       dispatch({ type: 'likeJoke', payload: joke });
     }
   };
+
   return (
-    <JokeContainer isLarge={isLarge}>
+    <JokeContainer isFavourite={isFavourite}>
       <MessageIconContainer>
-        <IconContainer isLarge={isLarge}>
+        <IconContainer isFavourite={isFavourite}>
           <MessageIcon />
         </IconContainer>
       </MessageIconContainer>
@@ -56,7 +58,7 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
             <span>Last update: </span>
             <span>{`${joke.updateTime} hours ago`}</span>
           </TimeContainer>
-          {isLarge && joke.category && <Category>{joke.category}</Category>}
+          {isFavourite && joke.category && <Category>{joke.category}</Category>}
         </InfoContainer>
       </InnerContainer>
     </JokeContainer>
@@ -64,5 +66,5 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isLarge, joke }) => {
 };
 
 JokeCard.defaultProps = {
-  isLarge: false,
+  isFavourite: false,
 };

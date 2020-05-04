@@ -99,7 +99,7 @@ const jokesReducer = (state: State, action: Action) => {
       return {
         ...state,
         favouriteList,
-        jokeList,
+        jokeList: jokeId === -1 ? state.jokeList : jokeList,
       };
     }
     case 'fetchCategories': {

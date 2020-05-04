@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
-type JokeCardStyledProps = { isLarge?: boolean };
+type JokeCardStyledProps = { isFavourite?: boolean };
 
 export const JokeContainer = styled.div<JokeCardStyledProps>`
   display: flex;
-  padding: ${({ isLarge }) => (isLarge ? '40px' : '20px')};
-  background-color: ${({ theme, isLarge }) =>
-    isLarge
-      ? theme.colors.background.secondary
-      : theme.colors.background.primary};
-  box-shadow: ${({ theme, isLarge }) => !isLarge && theme.boxShadow};
-  font-size: ${({ theme, isLarge }) =>
-    isLarge ? theme.fontSize.text.extraLarge : theme.fontSize.text.regular};
+  padding: ${({ isFavourite }) => (isFavourite ? '20px' : '40px')};
+  background-color: ${({ theme, isFavourite }) =>
+    isFavourite
+      ? theme.colors.background.primary
+      : theme.colors.background.secondary};
+  box-shadow: ${({ theme, isFavourite }) => isFavourite && theme.boxShadow};
+  font-size: ${({ theme, isFavourite }) =>
+    isFavourite ? theme.fontSize.text.regular : theme.fontSize.text.extraLarge};
   color: ${({ theme }) => theme.colors.text.primary};
-  border-radius: ${({ theme, isLarge }) =>
-    isLarge ? theme.borderRadius.large : theme.borderRadius.regular};
+  border-radius: ${({ theme, isFavourite }) =>
+    isFavourite ? theme.borderRadius.regular : theme.borderRadius.large};
 `;
 
 export const MessageIconContainer = styled.div`
@@ -27,10 +27,10 @@ export const IconContainer = styled.div<JokeCardStyledProps>`
   height: 40px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme, isLarge }) =>
-    isLarge
-      ? theme.colors.background.primary
-      : theme.colors.background.secondary};
+  background-color: ${({ theme, isFavourite }) =>
+    isFavourite
+      ? theme.colors.background.secondary
+      : theme.colors.background.primary};
   border-radius: 50%;
 `;
 
@@ -66,7 +66,7 @@ export const InfoContainer = styled.div<JokeCardStyledProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: ${({ isLarge }) => (isLarge ? '23px' : '20px')};
+  padding-top: ${({ isFavourite }) => (isFavourite ? '20px' : '23px')};
 `;
 
 export const TextContainer = styled.div`
