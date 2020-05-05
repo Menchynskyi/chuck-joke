@@ -139,7 +139,9 @@ export const JokeForm = () => {
           placeholder="Free text search..."
         />
       )}
-      <SubmitButton type="submit">Get a joke</SubmitButton>
+      <SubmitButton disabled type="submit" label="Choose category">
+        Get a joke
+      </SubmitButton>
     </FormStyled>
   );
 };
