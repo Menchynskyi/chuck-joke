@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 type CategoryButtonProps = { isActive: boolean };
+type SubmitButtonProps = { label: string };
 
 export const FormStyled = styled.form`
   margin-bottom: 40px;
@@ -56,7 +57,7 @@ export const LabelStyled = styled.label<{ isChecked: boolean }>`
   }
 `;
 
-export const SubmitButton = styled.button<{ label: string }>`
+export const SubmitButton = styled.button<SubmitButtonProps>`
   position: relative;
   margin-top: 10px;
   padding: 10px 40px;
@@ -98,9 +99,9 @@ export const SubmitButton = styled.button<{ label: string }>`
     &:hover:after {
       position: absolute;
       top: calc(100% + 6px);
-      left: 0;
-      width: 100%;
-      padding: 5px 0;
+      left: 10px;
+      width: calc(100% - 30px);
+      padding: 5px 5px;
       background-color: ${({ theme }) => theme.colors.text.primary};
       border-radius: ${({ theme }) => theme.borderRadius.small};
       color: ${({ theme }) => theme.colors.background.primary};

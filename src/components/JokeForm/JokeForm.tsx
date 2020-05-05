@@ -94,6 +94,15 @@ export const JokeForm = () => {
     setFormState((prev) => ({ ...prev, search: value }));
   };
 
+  const labelText =
+    formState.type === 'category' && !formState.category
+      ? 'Choose category'
+      : 'Search is required';
+
+  const isDisabled =
+    (formState.type === 'category' && !formState.category) ||
+    (formState.type === 'search' && !formState.search);
+
   return (
     <FormStyled onSubmit={handleSubmit}>
       <LabelStyled isChecked={isRandom} htmlFor="random">
@@ -139,7 +148,7 @@ export const JokeForm = () => {
           placeholder="Free text search..."
         />
       )}
-      <SubmitButton disabled type="submit" label="Choose category">
+      <SubmitButton disabled={isDisabled} type="submit" label={labelText}>
         Get a joke
       </SubmitButton>
     </FormStyled>

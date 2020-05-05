@@ -51,6 +51,6 @@ export const lightTheme: DefaultTheme = {
     }px) and (max-width: ${size.desktop - 1}px)`,
     desktop: `only screen and (min-width: ${size.desktop}px)`,
   },
-  hoverOpacity: '0.7',
+  hoverOpacity: '0.85',
   letterSpacing: '2px',
 };
