@@ -58,7 +58,9 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isFavourite, joke }) => {
             <span>Last update: </span>
             <span>{`${joke.updateTime} hours ago`}</span>
           </TimeContainer>
-          {isFavourite && joke.category && <Category>{joke.category}</Category>}
+          {!isFavourite && joke.category && (
+            <Category>{joke.category}</Category>
+          )}
         </InfoContainer>
       </InnerContainer>
     </JokeContainer>
