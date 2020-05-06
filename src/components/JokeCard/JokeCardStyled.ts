@@ -60,6 +60,10 @@ export const JokeLink = styled.a`
   & > svg {
     margin-left: 5px;
   }
+
+  &:hover {
+    opacity: ${({ theme }) => theme.hoverOpacity};
+  }
 `;
 
 export const InfoContainer = styled.div<JokeCardStyledProps>`

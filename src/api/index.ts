@@ -1,2 +1,6 @@
-export { getRandomJoke, getJokeByCategory, getJokeBySearch } from './jokes';
-export { fetchCategories } from './categories';
+export {
+  getRandomJoke,
+  getJokeByCategory,
+  getJokeBySearch,
+  fetchCategories,
+} from './jokes';

@@ -4,24 +4,26 @@ import { JokeList, FavouriteList, JokeForm } from './components';
 import {
   MainContainer,
   AsideContainer,
-  PageTitle,
+  HeaderTitle,
   AsideTitle,
-  SectionStyled,
   SectionTitle,
   TextContainer,
+  HeaderStyled,
 } from './AppStyled';
 
 export const App: React.FC = () => {
   return (
     <JokesProvider>
+      <HeaderStyled>
+        <HeaderTitle>MSI 2020</HeaderTitle>
+      </HeaderStyled>
       <MainContainer>
-        <PageTitle>MSI 2020</PageTitle>
-        <SectionStyled>
+        <section>
           <SectionTitle>Hey!</SectionTitle>
           <TextContainer>Let’s try to find a joke for you:</TextContainer>
           <JokeForm />
           <JokeList />
-        </SectionStyled>
+        </section>
       </MainContainer>
       <AsideContainer>
         <AsideTitle>Favourite</AsideTitle>

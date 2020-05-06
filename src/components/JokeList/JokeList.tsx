@@ -15,6 +15,10 @@ export const JokeList: React.FC = () => {
     );
   }
 
+  if (jokeList.length === 0) {
+    return null;
+  }
+
   return (
     <JokeListStyled>
       {isLoaded &&

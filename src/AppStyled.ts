@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
-export const MainContainer = styled.main`
-  max-width: 680px;
-  margin-right: 620px;
-  margin-left: 140px;
+export const HeaderStyled = styled.header`
+  margin: 40px 0 0 140px;
 `;
 
-export const PageTitle = styled.h1`
-  margin: 40px 0 0 0;
+export const HeaderTitle = styled.h1`
+  margin: 0;
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontSize.heading.small};
   line-height: 28px;
+`;
+
+export const MainContainer = styled.main`
+  max-width: 680px;
+  margin: 78px 620px 0 140px;
 `;
 
 export const AsideContainer = styled.aside`
@@ -31,9 +34,7 @@ export const AsideTitle = styled.h2`
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
-export const SectionStyled = styled.section`
-  margin-top: 78px;
-`;
+export const SectionStyled = styled.section``;
 
 export const SectionTitle = styled.h2`
   margin: 0;
