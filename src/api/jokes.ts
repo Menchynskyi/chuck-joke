@@ -3,14 +3,15 @@ import { Joke, ApiJoke } from '../types';
 import { Action } from '../contexts';
 import { transformJoke } from '../utils';
 
+const apiUrl = 'https://api.chucknorris.io/jokes/';
+
 export const getRandomJoke = async (
   dispatch: React.Dispatch<Action>,
   favouriteList: Joke[]
 ) => {
   dispatch({ type: 'startFetching' });
   try {
-    const { data } = await axios.get('https://api.chucknorris.io/jokes/random');
-    console.log(data);
+    const { data } = await axios.get(`${apiUrl}random`);
     const isLiked = favouriteList.some(({ id }) => id === data.id);
     const joke = transformJoke(data, isLiked);
     dispatch({ type: 'getRandomJoke', payload: joke });
@@ -28,9 +29,7 @@ export const getJokeByCategory = async (
   if (!category) return;
   dispatch({ type: 'startFetching' });
   try {
-    const { data } = await axios.get(
-      `https://api.chucknorris.io/jokes/random?category=${category}`
-    );
+    const { data } = await axios.get(`${apiUrl}random?category=${category}`);
     const isLiked = favouriteList.some(({ id }) => id === data.id);
     const joke = transformJoke(data, isLiked);
     dispatch({ type: 'getRandomJoke', payload: joke });
@@ -48,9 +47,7 @@ export const getJokeBySearch = async (
   if (!searchInput) return;
   dispatch({ type: 'startFetching' });
   try {
-    const { data } = await axios.get(
-      `https://api.chucknorris.io/jokes/search?query=${searchInput}`
-    );
+    const { data } = await axios.get(`${apiUrl}search?query=${searchInput}`);
     const jokeList: Joke[] = data.result.map((joke: ApiJoke) => {
       const isLiked = favouriteList.some(({ id }) => id === joke.id);
       return transformJoke(joke, isLiked);
