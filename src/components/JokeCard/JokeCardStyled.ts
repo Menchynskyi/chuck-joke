@@ -76,6 +76,13 @@ export const InfoContainer = styled.div<JokeCardStyledProps>`
 export const TextContainer = styled.div`
   padding-top: 5px;
   line-height: 26px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 `;
 
 export const TimeContainer = styled.div`
