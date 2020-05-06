@@ -61,10 +61,12 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
   position: relative;
   margin-top: 10px;
   padding: 10px 40px;
-  background: ${({ theme, disabled }) =>
-    disabled
-      ? theme.colors.text.secondary
-      : `linear-gradient(92.01deg, ${theme.colors.blue.primary} 0%, ${theme.colors.blue.secondary} 100%)`};
+  background-image: ${({ theme, disabled }) =>
+    `linear-gradient(92.01deg, ${
+      disabled ? theme.colors.text.secondary : theme.colors.blue.primary
+    } 0%, ${
+      disabled ? theme.colors.text.secondary : theme.colors.blue.secondary
+    } 100%)`};
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.regular};
   font-weight: bold;
@@ -74,13 +76,11 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
   transition: all 0.2s;
 
   &:hover {
-    cursor: pointer;
+    cursor: ${({ disabled }) => !disabled && 'pointer'};
     opacity: ${({ theme, disabled }) => !disabled && theme.hoverOpacity};
   }
 
   &[disabled] {
-    cursor: default;
-
     &:hover:before,
     &:hover:after {
       position: absolute;
