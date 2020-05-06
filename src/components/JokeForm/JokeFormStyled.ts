@@ -75,15 +75,19 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
 
   &:hover {
     cursor: pointer;
-    opacity: ${({ theme }) => theme.hoverOpacity};
+    opacity: ${({ theme, disabled }) => !disabled && theme.hoverOpacity};
   }
 
   &[disabled] {
     cursor: default;
-    opacity: 1;
+
+    &:hover:before,
+    &:hover:after {
+      position: absolute;
+      opacity: ${({ theme }) => theme.hoverOpacity};
+    }
 
     &:hover:before {
-      position: absolute;
       top: calc(100% + 1px);
       left: calc(50% - 5px);
       width: 0;
@@ -92,21 +96,19 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
       border-width: 0 5px 5px 5px;
       border-color: ${({ theme }) =>
         `transparent transparent ${theme.colors.text.primary} transparent`};
-      opacity: ${({ theme }) => theme.hoverOpacity};
       content: '';
     }
 
     &:hover:after {
-      position: absolute;
       top: calc(100% + 6px);
-      left: 10px;
-      width: calc(100% - 30px);
-      padding: 5px 5px;
+      left: 15px;
+      width: calc(100% - 40px);
+      padding: 2.5px;
       background-color: ${({ theme }) => theme.colors.text.primary};
       border-radius: ${({ theme }) => theme.borderRadius.small};
       color: ${({ theme }) => theme.colors.background.primary};
       font-size: ${({ theme }) => theme.fontSize.text.small};
-      opacity: ${({ theme }) => theme.hoverOpacity};
+      font-weight: normal;
       content: attr(label);
     }
   }
