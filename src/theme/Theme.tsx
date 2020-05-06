@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import { lightTheme } from './lightTheme';
+import { lightTheme } from './light-theme';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}

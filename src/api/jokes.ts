@@ -59,3 +59,12 @@ export const getJokeBySearch = async (
     throw new Error(error.message);
   }
 };
+
+export const fetchCategories = async (dispatch: React.Dispatch<Action>) => {
+  try {
+    const { data } = await axios.get(`${apiUrl}categories`);
+    dispatch({ type: 'fetchCategories', payload: data });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
