@@ -52,7 +52,7 @@ export const JokeCard: React.FC<JokeCardProps> = ({ isFavourite, joke }) => {
             <LinkIcon />
           </JokeLink>
         </IDContainer>
-        <TextContainer>{joke.text}</TextContainer>
+        <TextContainer isFavourite={isFavourite}>{joke.text}</TextContainer>
         <InfoContainer>
           <TimeContainer>
             <span>Last update: </span>

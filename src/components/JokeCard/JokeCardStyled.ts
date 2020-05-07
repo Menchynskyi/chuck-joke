@@ -10,11 +10,11 @@ export const JokeContainer = styled.div<JokeCardStyledProps>`
       ? theme.colors.background.primary
       : theme.colors.background.secondary};
   box-shadow: ${({ theme, isFavourite }) => isFavourite && theme.boxShadow};
+  border-radius: ${({ theme, isFavourite }) =>
+    isFavourite ? theme.borderRadius.regular : theme.borderRadius.large};
   font-size: ${({ theme, isFavourite }) =>
     isFavourite ? theme.fontSize.text.regular : theme.fontSize.text.extraLarge};
   color: ${({ theme }) => theme.colors.text.primary};
-  border-radius: ${({ theme, isFavourite }) =>
-    isFavourite ? theme.borderRadius.regular : theme.borderRadius.large};
 `;
 
 export const MessageIconContainer = styled.div`
@@ -50,7 +50,7 @@ export const IDContainer = styled.div`
   padding-top: 10px;
   color: ${({ theme }) => theme.colors.text.secondary};
   font-size: ${({ theme }) => theme.fontSize.text.extraSmall};
-  line-height: 14px;
+  line-height: 1.4em;
   font-weight: 500;
 `;
 
@@ -73,9 +73,9 @@ export const InfoContainer = styled.div<JokeCardStyledProps>`
   padding-top: ${({ isFavourite }) => (isFavourite ? '20px' : '23px')};
 `;
 
-export const TextContainer = styled.div`
+export const TextContainer = styled.div<JokeCardStyledProps>`
   padding-top: 5px;
-  line-height: 26px;
+  line-height: ${({ isFavourite }) => (isFavourite ? '1.43em' : '1.44em')};
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -88,6 +88,7 @@ export const TextContainer = styled.div`
 export const TimeContainer = styled.div`
   color: ${({ theme }) => theme.colors.text.secondary};
   font-size: ${({ theme }) => theme.fontSize.text.extraSmall};
+  line-height: 1.4em;
 
   & > span:last-of-type {
     font-weight: 500;
@@ -99,7 +100,8 @@ export const Category = styled.div`
   background-color: ${({ theme }) => theme.colors.background.primary};
   border-radius: ${({ theme }) => theme.borderRadius.small};
   font-size: ${({ theme }) => theme.fontSize.text.extraSmall};
+  font-weight: 500;
+  line-height: 1.4em;
   text-transform: uppercase;
   letter-spacing: ${({ theme }) => theme.letterSpacing};
-  font-weight: 500;
 `;
