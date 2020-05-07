@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type CategoryButtonProps = { isActive: boolean };
 type SubmitButtonProps = { label: string };
+type SearchInputProps = { isError: boolean };
 
 export const FormStyled = styled.form`
   margin-bottom: 40px;
@@ -118,13 +119,15 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
   }
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled.input<SearchInputProps>`
   width: 100%;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
   padding: 10px 15px;
   font-size: ${({ theme }) => theme.fontSize.text.large};
   color: ${({ theme }) => theme.colors.text.primary};
-  border: 2px solid ${({ theme }) => theme.colors.text.primary};
+  border: 2px solid
+    ${({ theme, isError }) =>
+      isError ? theme.colors.red : theme.colors.text.primary};
   border-radius: ${({ theme }) => theme.borderRadius.regular};
 
   &::placeholder {
@@ -172,4 +175,11 @@ export const CategoryButton = styled.button<CategoryButtonProps>`
   &:focus {
     outline: none;
   }
+`;
+
+export const ErrorMessageContainer = styled.div`
+  display: flex;
+  height: ${({ theme }) => theme.fontSize.text.regular};
+  margin: 3px 0 0 0;
+  padding-left: 2px;
 `;
