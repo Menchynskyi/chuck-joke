@@ -30,7 +30,7 @@ const setColor = ({ theme, color }: MessageStyledProps) => {
 const setFontSize = ({ theme, size }: MessageStyledProps) => {
   switch (size) {
     case 'small': {
-      return theme.fontSize.text.extraSmall;
+      return theme.fontSize.text.regular;
     }
     case 'regular': {
       return theme.fontSize.text.extraLarge;

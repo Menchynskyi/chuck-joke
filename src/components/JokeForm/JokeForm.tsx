@@ -8,6 +8,7 @@ import {
   CategoriesListItem,
   CategoryButton,
   RadioInput,
+  ErrorMessageContainer,
 } from './JokeFormStyled';
 import { useJokesDispatch, useJokesState } from '../../contexts';
 import {
@@ -16,6 +17,7 @@ import {
   getRandomJoke,
   getJokeBySearch,
 } from '../../api';
+import { Message } from '../Message';
 
 type JokeSearchType = 'random' | 'category' | 'search';
 
@@ -31,6 +33,7 @@ export const JokeForm = () => {
     category: '',
     search: '',
   });
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useJokesDispatch();
   const { categories, favouriteList } = useJokesState();
@@ -55,7 +58,14 @@ export const JokeForm = () => {
         break;
       }
       case 'search': {
-        if (formState.search.length < 3) return;
+        if (formState.search.length < 3) {
+          setErrorMessage('At least 3 characters is required');
+          return;
+        }
+        if (formState.search.length > 120) {
+          setErrorMessage('Maximum search length is 120');
+          return;
+        }
         getJokeBySearch(dispatch, favouriteList, formState.search);
         break;
       }
@@ -92,6 +102,9 @@ export const JokeForm = () => {
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setFormState((prev) => ({ ...prev, search: value }));
+    if (value.length > 2 && value.length < 120) {
+      setErrorMessage('');
+    }
   };
 
   const labelText =
@@ -142,11 +155,19 @@ export const JokeForm = () => {
         Search
       </LabelStyled>
       {isBySearch && (
-        <SearchInput
-          value={formState.search}
-          onChange={handleSearchChange}
-          placeholder="Free text search..."
-        />
+        <>
+          <SearchInput
+            isError={!!errorMessage}
+            value={formState.search}
+            onChange={handleSearchChange}
+            placeholder="Free text search..."
+          />
+          <ErrorMessageContainer>
+            <Message size="small" color="danger">
+              {errorMessage}
+            </Message>
+          </ErrorMessageContainer>
+        </>
       )}
       <SubmitButton disabled={isDisabled} type="submit" label={labelText}>
         Get a joke

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 type CategoryButtonProps = { isActive: boolean };
 type SubmitButtonProps = { label: string };
+type SearchInputProps = { isError: boolean };
+type LabelStyledProps = { isChecked: boolean };
 
 export const FormStyled = styled.form`
   margin-bottom: 40px;
@@ -18,14 +20,14 @@ export const RadioInput = styled.input`
   overflow: hidden;
 `;
 
-export const LabelStyled = styled.label<{ isChecked: boolean }>`
+export const LabelStyled = styled.label<LabelStyledProps>`
   position: relative;
   display: block;
   padding-left: 35px;
   margin-bottom: 10px;
   font-size: ${({ theme }) => theme.fontSize.text.extraLarge};
   color: ${({ theme }) => theme.colors.text.primary};
-  line-height: 26px;
+  line-height: 1.44em;
 
   &:hover {
     cursor: pointer;
@@ -72,7 +74,7 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontSize.text.large};
   color: ${({ theme }) => theme.colors.background.primary};
-  line-height: 22px;
+  line-height: 1.375em;
   transition: all 0.2s;
 
   &:hover {
@@ -118,14 +120,16 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
   }
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled.input<SearchInputProps>`
   width: 100%;
-  margin: 10px 0;
+  margin: 17px 0 0 0;
   padding: 10px 15px;
-  font-size: ${({ theme }) => theme.fontSize.text.large};
-  color: ${({ theme }) => theme.colors.text.primary};
-  border: 2px solid ${({ theme }) => theme.colors.text.primary};
+  border: 2px solid
+    ${({ theme, isError }) =>
+      isError ? theme.colors.red : theme.colors.text.primary};
   border-radius: ${({ theme }) => theme.borderRadius.regular};
+  color: ${({ theme }) => theme.colors.text.primary};
+  font-size: ${({ theme }) => theme.fontSize.text.large};
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text.secondary};
@@ -154,15 +158,15 @@ export const CategoryButton = styled.button<CategoryButtonProps>`
     isActive
       ? theme.colors.background.secondary
       : theme.colors.background.primary};
+  border: 2px solid ${({ theme }) => theme.colors.background.secondary};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
   color: ${({ theme, isActive }) =>
     isActive ? theme.colors.text.primary : theme.colors.text.secondary};
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSize.text.small};
   text-transform: uppercase;
-  line-height: 16px;
+  line-height: 1.33em;
   letter-spacing: ${({ theme }) => theme.letterSpacing};
-  border: 2px solid ${({ theme }) => theme.colors.background.secondary};
-  border-radius: ${({ theme }) => theme.borderRadius.small};
 
   &:hover {
     cursor: pointer;
@@ -172,4 +176,12 @@ export const CategoryButton = styled.button<CategoryButtonProps>`
   &:focus {
     outline: none;
   }
+`;
+
+export const ErrorMessageContainer = styled.div`
+  display: flex;
+  height: 1em;
+  margin: 3px 0 0 0;
+  padding-left: 2px;
+  font-size: ${({ theme }) => theme.fontSize.text.regular};
 `;

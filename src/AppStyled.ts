@@ -8,7 +8,7 @@ export const HeaderTitle = styled.h1`
   margin: 0;
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontSize.heading.small};
-  line-height: 28px;
+  line-height: 1.4em;
 `;
 
 export const MainContainer = styled.main`
@@ -28,10 +28,10 @@ export const AsideContainer = styled.aside`
 
 export const AsideTitle = styled.h2`
   margin: 20px 0 20px 0;
+  color: ${({ theme }) => theme.colors.text.secondary};
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSize.heading.small};
-  line-height: 28px;
-  color: ${({ theme }) => theme.colors.text.secondary};
+  line-height: 1.4em;
 `;
 
 export const SectionStyled = styled.section``;
@@ -40,12 +40,12 @@ export const SectionTitle = styled.h2`
   margin: 0;
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontSize.heading.large};
-  line-height: 44px;
+  line-height: 1.375em;
 `;
 
 export const TextContainer = styled.p`
   margin: 0 0 43px 0;
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSize.heading.regular};
-  line-height: 44px;
+  line-height: 1.83em;
 `;
