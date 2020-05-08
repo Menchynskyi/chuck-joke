@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   LabelStyled,
   SubmitButton,
@@ -10,80 +10,30 @@ import {
   RadioInput,
   ErrorMessageContainer,
 } from './JokeFormStyled';
-import { useJokesDispatch, useJokesState } from '../../contexts';
-import {
-  fetchCategories,
-  getJokeByCategory,
-  getRandomJoke,
-  getJokeBySearch,
-} from '../../api';
 import { Message } from '../Message';
-
-type JokeSearchType = 'random' | 'category' | 'search';
-
-type FormState = {
-  type: JokeSearchType;
-  category: string;
-  search: string;
-};
+import { useJokeForm } from './hooks';
 
 export const JokeForm = () => {
-  const [formState, setFormState] = useState<FormState>({
-    type: 'random',
-    category: '',
-    search: '',
-  });
-  const [errorMessage, setErrorMessage] = useState('');
+  const {
+    formState,
+    errorMessage,
+    handleSubmit,
+    handleRadioChange,
+    handleCategoryChange,
+    handleSearchChange,
+    activeRadio,
+    tooltipMessage,
+    isDisabled,
+    categories,
+  } = useJokeForm();
 
-  const dispatch = useJokesDispatch();
-  const { categories, favouriteList } = useJokesState();
-
-  useEffect(() => {
-    fetchCategories(dispatch);
-  }, [dispatch]);
-
-  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setFormState((prev) => ({ ...prev, type: value as JokeSearchType }));
-  };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    switch (formState.type) {
-      case 'random': {
-        getRandomJoke(dispatch, favouriteList);
-        break;
-      }
-      case 'category': {
-        getJokeByCategory(dispatch, favouriteList, formState.category);
-        break;
-      }
-      case 'search': {
-        if (formState.search.length < 3) {
-          setErrorMessage('At least 3 characters is required');
-          return;
-        }
-        if (formState.search.length > 120) {
-          setErrorMessage('Maximum search length is 120');
-          return;
-        }
-        getJokeBySearch(dispatch, favouriteList, formState.search);
-        break;
-      }
-      default: {
-        throw new Error('Something went wrong');
-      }
-    }
-  };
-
-  const isRandom = formState.type === 'random';
-  const isByCategory = formState.type === 'category';
-  const isBySearch = formState.type === 'search';
+  const { isRandom, isByCategory, isBySearch } = activeRadio;
 
   const renderCategories = (categoriesArray: string[]) => {
     return categoriesArray.map((category) => {
       const isActive = category === formState.category;
       const handleClick = () => {
-        setFormState((prev) => ({ ...prev, category }));
+        handleCategoryChange(category);
       };
       return (
         <CategoriesListItem key={category}>
@@ -98,23 +48,6 @@ export const JokeForm = () => {
       );
     });
   };
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setFormState((prev) => ({ ...prev, search: value }));
-    if (value.length > 2 && value.length < 120) {
-      setErrorMessage('');
-    }
-  };
-
-  const labelText =
-    formState.type === 'category' && !formState.category
-      ? 'Choose category'
-      : 'Search is required';
-
-  const isDisabled =
-    (formState.type === 'category' && !formState.category) ||
-    (formState.type === 'search' && !formState.search);
 
   return (
     <FormStyled onSubmit={handleSubmit}>
@@ -169,7 +102,7 @@ export const JokeForm = () => {
           </ErrorMessageContainer>
         </>
       )}
-      <SubmitButton disabled={isDisabled} type="submit" label={labelText}>
+      <SubmitButton disabled={isDisabled} type="submit" label={tooltipMessage}>
         Get a joke
       </SubmitButton>
     </FormStyled>
