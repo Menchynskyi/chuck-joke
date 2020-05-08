@@ -12,6 +12,7 @@ type JokeSearchType = 'random' | 'category' | 'search';
 type FormState = {
   type: JokeSearchType;
   category: string;
+  categories: string[];
   search: string;
 };
 
@@ -19,16 +20,19 @@ export const useJokeForm = () => {
   const [formState, setFormState] = useState<FormState>({
     type: 'random',
     category: '',
+    categories: [],
     search: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useJokesDispatch();
-  const { categories, favouriteList } = useJokesState();
+  const { favouriteList } = useJokesState();
 
   useEffect(() => {
-    fetchCategories(dispatch);
-  }, [dispatch]);
+    fetchCategories().then((categories) => {
+      setFormState((prev) => ({ ...prev, categories }));
+    });
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -101,6 +105,5 @@ export const useJokeForm = () => {
     activeRadio,
     tooltipMessage,
     isDisabled,
-    categories,
   };
 };

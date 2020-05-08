@@ -16,8 +16,7 @@ export type Action =
   | { type: 'startFetching' }
   | { type: 'errorFetching' }
   | { type: 'likeJoke'; payload: Joke }
-  | { type: 'dislikeJoke'; payload: Joke }
-  | { type: 'fetchCategories'; payload: string[] };
+  | { type: 'dislikeJoke'; payload: Joke };
 
 type JokesContextState = {
   state: State;
@@ -100,12 +99,6 @@ const jokesReducer = (state: State, action: Action) => {
         ...state,
         favouriteList,
         jokeList: jokeId === -1 ? state.jokeList : jokeList,
-      };
-    }
-    case 'fetchCategories': {
-      return {
-        ...state,
-        categories: action.payload,
       };
     }
     default: {

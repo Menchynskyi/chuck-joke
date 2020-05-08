@@ -60,10 +60,10 @@ export const getJokeBySearch = async (
   }
 };
 
-export const fetchCategories = async (dispatch: React.Dispatch<Action>) => {
+export const fetchCategories = async () => {
   try {
     const { data } = await axios.get(`${apiUrl}categories`);
-    dispatch({ type: 'fetchCategories', payload: data });
+    return data as string[];
   } catch (error) {
     throw new Error(error.message);
   }

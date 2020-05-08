@@ -24,7 +24,6 @@ export const JokeForm = () => {
     activeRadio,
     tooltipMessage,
     isDisabled,
-    categories,
   } = useJokeForm();
 
   const { isRandom, isByCategory, isBySearch } = activeRadio;
@@ -74,7 +73,9 @@ export const JokeForm = () => {
         From categories
       </LabelStyled>
       {isByCategory && (
-        <CategoriesList>{renderCategories(categories)}</CategoriesList>
+        <CategoriesList>
+          {renderCategories(formState.categories)}
+        </CategoriesList>
       )}
       <LabelStyled isChecked={isBySearch} htmlFor="search">
         <RadioInput
