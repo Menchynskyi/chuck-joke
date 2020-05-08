@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useReducer } from 'react';
 import { Joke } from '../types';
 
 type State = {
@@ -7,7 +7,6 @@ type State = {
   isError: boolean;
   isLoading: boolean;
   isLoaded: boolean;
-  categories: string[];
 };
 
 export type Action =
@@ -16,8 +15,7 @@ export type Action =
   | { type: 'startFetching' }
   | { type: 'errorFetching' }
   | { type: 'likeJoke'; payload: Joke }
-  | { type: 'dislikeJoke'; payload: Joke }
-  | { type: 'fetchCategories'; payload: string[] };
+  | { type: 'dislikeJoke'; payload: Joke };
 
 type JokesContextState = {
   state: State;
@@ -28,7 +26,6 @@ type JokesProviderProps = { children: React.ReactNode };
 
 const initialState: State = {
   jokeList: [],
-  categories: [],
   favouriteList: JSON.parse(localStorage.getItem('favouriteList') || '[]'),
   isError: false,
   isLoaded: false,
@@ -102,19 +99,15 @@ const jokesReducer = (state: State, action: Action) => {
         jokeList: jokeId === -1 ? state.jokeList : jokeList,
       };
     }
-    case 'fetchCategories': {
-      return {
-        ...state,
-        categories: action.payload,
-      };
-    }
     default: {
       return state;
     }
   }
 };
 
-const JokesContext = createContext<JokesContextState | undefined>(undefined);
+export const JokesContext = createContext<JokesContextState | undefined>(
+  undefined
+);
 
 export const JokesProvider = ({ children }: JokesProviderProps) => {
   const [state, dispatch] = useReducer(jokesReducer, initialState);
@@ -123,28 +116,4 @@ export const JokesProvider = ({ children }: JokesProviderProps) => {
       {children}
     </JokesContext.Provider>
   );
-};
-
-export const useJokesContext = () => {
-  const context = useContext(JokesContext);
-  if (context === undefined) {
-    throw new Error('useJokesContext must be used within a JokesProvider');
-  }
-  return context;
-};
-
-export const useJokesState = () => {
-  const context = useContext(JokesContext);
-  if (context === undefined) {
-    throw new Error('useJokesState must be used within a JokesProvider');
-  }
-  return context.state;
-};
-
-export const useJokesDispatch = () => {
-  const context = useContext(JokesContext);
-  if (context === undefined) {
-    throw new Error('useJokesDispatch must be used within a JokesProvider');
-  }
-  return context.dispatch;
 };
