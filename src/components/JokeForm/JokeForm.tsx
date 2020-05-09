@@ -74,7 +74,7 @@ export const JokeForm = () => {
       </LabelStyled>
       {isByCategory && (
         <CategoriesList>
-          {renderCategories(formState.categories)}
+          {renderCategories(formState.categoriesList)}
         </CategoriesList>
       )}
       <LabelStyled isChecked={isBySearch} htmlFor="search">
