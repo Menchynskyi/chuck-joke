@@ -10,10 +10,12 @@ export const calculateDateDiff = (currentDate: number, lastUpdate: string) => {
 
 export const transformJoke = (
   apiJoke: ApiJoke,
-  favouriteList: Joke[]
+  favouriteList?: Joke[]
 ): Joke => {
   const updateTime = calculateDateDiff(Date.now(), apiJoke.updated_at);
-  const isLiked = favouriteList.some(({ id }) => id === apiJoke.id);
+  const isLiked = favouriteList
+    ? favouriteList.some(({ id }) => id === apiJoke.id)
+    : true;
   return {
     id: apiJoke.id,
     text: apiJoke.value,

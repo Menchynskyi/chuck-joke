@@ -57,6 +57,26 @@ export const getJokeBySearch = async (
   }
 };
 
+export const getJokeById = async (jokeId: string) => {
+  try {
+    const { data } = await axios.get(`${apiUrl}${jokeId}`);
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const updateFavouriteJokes = async (
+  dispatch: React.Dispatch<Action>,
+  favouriteList: Joke[]
+) => {
+  const data: ApiJoke[] = await Promise.all(
+    favouriteList.map(({ id }) => getJokeById(id))
+  );
+  const updatedFavouriteList = data.map((joke) => transformJoke(joke));
+  dispatch({ type: 'updateFavouriteJokes', payload: updatedFavouriteList });
+};
+
 export const fetchCategories = async () => {
   try {
     const { data } = await axios.get(`${apiUrl}categories`);
