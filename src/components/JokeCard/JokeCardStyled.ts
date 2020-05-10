@@ -9,7 +9,8 @@ export const JokeContainer = styled.div<JokeCardStyledProps>`
     isFavourite
       ? theme.colors.background.primary
       : theme.colors.background.secondary};
-  box-shadow: ${({ theme, isFavourite }) => isFavourite && theme.boxShadow};
+  box-shadow: ${({ theme, isFavourite }) =>
+    isFavourite && theme.boxShadow.main};
   border-radius: ${({ theme, isFavourite }) =>
     isFavourite ? theme.borderRadius.regular : theme.borderRadius.large};
   font-size: ${({ theme, isFavourite }) =>
@@ -63,6 +64,11 @@ export const JokeLink = styled.a`
 
   &:hover {
     opacity: ${({ theme }) => theme.hoverOpacity};
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: ${({ theme }) => theme.boxShadow.focus};
   }
 `;
 

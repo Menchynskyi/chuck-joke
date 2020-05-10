@@ -27,7 +27,8 @@ export const LabelStyled = styled.label<LabelStyledProps>`
   margin-bottom: 10px;
   font-size: ${({ theme }) => theme.fontSize.text.extraLarge};
   color: ${({ theme }) => theme.colors.text.primary};
-  line-height: 1.44em;
+  line-height: 1.45em;
+  transition: all 0.2s ease;
 
   &:hover {
     cursor: pointer;
@@ -56,6 +57,12 @@ export const LabelStyled = styled.label<LabelStyledProps>`
     height: 10px;
     background-color: ${({ theme, isChecked }) =>
       isChecked ? theme.colors.text.primary : 'transparent'};
+  }
+
+  &:focus-within {
+    &:before {
+      box-shadow: ${({ theme }) => theme.boxShadow.focus};
+    }
   }
 `;
 
@@ -117,6 +124,7 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
 
   &:focus {
     outline: none;
+    box-shadow: ${({ theme }) => theme.boxShadow.focus};
   }
 `;
 
@@ -130,6 +138,7 @@ export const SearchInput = styled.input<SearchInputProps>`
   border-radius: ${({ theme }) => theme.borderRadius.regular};
   color: ${({ theme }) => theme.colors.text.primary};
   font-size: ${({ theme }) => theme.fontSize.text.large};
+  transition: all 0.2s;
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.text.secondary};
@@ -137,6 +146,7 @@ export const SearchInput = styled.input<SearchInputProps>`
 
   &:focus {
     outline: none;
+    box-shadow: ${({ theme }) => theme.boxShadow.focus};
   }
 `;
 
@@ -175,6 +185,7 @@ export const CategoryButton = styled.button<CategoryButtonProps>`
 
   &:focus {
     outline: none;
+    box-shadow: ${({ theme }) => theme.boxShadow.focus};
   }
 `;
 

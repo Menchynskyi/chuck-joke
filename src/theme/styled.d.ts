@@ -33,7 +33,10 @@ declare module 'styled-components' {
       };
     };
     hoverOpacity: string;
-    boxShadow: string;
+    boxShadow: {
+      main: string;
+      focus: string;
+    };
     borderRadius: {
       small: string;
       regular: string;

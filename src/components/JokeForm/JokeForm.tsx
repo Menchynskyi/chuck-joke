@@ -16,12 +16,12 @@ import { useJokeForm } from './hooks';
 export const JokeForm = () => {
   const {
     formState,
-    errorMessage,
     handleSubmit,
     handleRadioChange,
     handleCategoryChange,
     handleSearchChange,
     activeRadio,
+    errorMessage,
     tooltipMessage,
     isDisabled,
   } = useJokeForm();
