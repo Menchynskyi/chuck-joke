@@ -7,6 +7,7 @@ export const lightTheme: DefaultTheme = {
     background: {
       primary: '#FFFFFF',
       secondary: '#F8F8F8',
+      transparent: 'rgba(0, 0, 0, 0.3)',
     },
     text: {
       primary: '#333333',

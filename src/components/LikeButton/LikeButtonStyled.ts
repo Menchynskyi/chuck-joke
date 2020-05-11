@@ -21,11 +21,11 @@ const heartShake = keyframes`
   }
 
   6.5% {
-    transform: translateX(-2px) rotateY(-3deg);
+    transform: translateX(-1px) rotateY(-2deg);
   }
 
   18.5% {
-    transform: translateX(2px) rotateY(3deg);
+    transform: translateX(1px) rotateY(2deg);
   }
 
   31.5% {
@@ -33,7 +33,7 @@ const heartShake = keyframes`
   }
 
   43.5% {
-    transform: translateX(1px) rotateY(1deg);
+    transform: translateX(1px) rotateY(2deg);
   }
 
   50% {

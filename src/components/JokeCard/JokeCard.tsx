@@ -14,8 +14,7 @@ import {
   JokeLink,
 } from './JokeCardStyled';
 import { LikeButton } from '../LikeButton';
-import { ReactComponent as MessageIcon } from './message-icon.svg';
-import { ReactComponent as LinkIcon } from './link-icon.svg';
+import { MessageIcon, LinkIcon } from '../../images';
 import { useJokesDispatch } from '../../contexts';
 
 type JokeCardProps = {

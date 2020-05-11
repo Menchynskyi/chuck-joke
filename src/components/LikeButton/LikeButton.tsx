@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from './LikeButtonStyled';
-import { ReactComponent as Heart } from './heart.svg';
-import { ReactComponent as HeartFilled } from './heart-filled.svg';
+import { Heart, HeartFilled } from '../../images';
 
 type LikeButton = {
   onToggle: () => void;
