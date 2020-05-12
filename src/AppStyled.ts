@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+type BarsStatus = { isOpen: boolean };
+
 export const AppContainer = styled.div`
   height: auto;
   min-height: 100vh;
@@ -55,7 +57,7 @@ export const MainContainer = styled.main`
   }
 `;
 
-export const AsideContainer = styled.aside<{ isOpen: boolean }>`
+export const AsideContainer = styled.aside<BarsStatus>`
   position: fixed;
   top: 0;
   right: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
@@ -113,7 +115,7 @@ export const TextContainer = styled.p`
   line-height: 1.83em;
 `;
 
-export const OpenBarsButton = styled.button<{ isOpen: boolean }>`
+export const OpenBarsButton = styled.button<BarsStatus>`
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -178,7 +180,7 @@ export const CloseBarsButton = styled.button`
   }
 `;
 
-export const AsideBackground = styled.div<{ isOpen: boolean }>`
+export const AsideBackground = styled.div<BarsStatus>`
   position: fixed;
   top: 0;
   left: 0;
