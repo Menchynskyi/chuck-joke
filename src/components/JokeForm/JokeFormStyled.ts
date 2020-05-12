@@ -7,7 +7,6 @@ type LabelStyledProps = { isChecked: boolean };
 
 export const FormStyled = styled.form`
   margin: 0 0 40px 0;
-  width: 100%;
 `;
 
 export const RadioInput = styled.input`

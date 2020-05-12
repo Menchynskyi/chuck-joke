@@ -4,7 +4,7 @@ type JokeCardStyledProps = { isFavourite?: boolean };
 
 export const JokeContainer = styled.div<JokeCardStyledProps>`
   display: flex;
-  padding: ${({ isFavourite }) => (isFavourite ? '20px' : '40px')};
+  padding: 20px;
   background-color: ${({ theme, isFavourite }) =>
     isFavourite
       ? theme.colors.background.primary
@@ -16,6 +16,10 @@ export const JokeContainer = styled.div<JokeCardStyledProps>`
   font-size: ${({ theme, isFavourite }) =>
     isFavourite ? theme.fontSize.text.regular : theme.fontSize.text.extraLarge};
   color: ${({ theme }) => theme.colors.text.primary};
+
+  @media ${({ theme }) => theme.device.tablet} {
+    padding: ${({ isFavourite }) => (isFavourite ? '20px' : '40px')};
+  }
 `;
 
 export const MessageIconContainer = styled.div`
@@ -74,6 +78,7 @@ export const JokeLink = styled.a`
 
 export const InfoContainer = styled.div<JokeCardStyledProps>`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding-top: ${({ isFavourite }) => (isFavourite ? '20px' : '23px')};
@@ -99,6 +104,10 @@ export const TimeContainer = styled.div`
   & > span:last-of-type {
     font-weight: 500;
   }
+
+  @media ${({ theme }) => theme.device.mobileS} {
+    width: 100%;
+  }
 `;
 
 export const Category = styled.div`
@@ -110,4 +119,8 @@ export const Category = styled.div`
   line-height: 1.4em;
   text-transform: uppercase;
   letter-spacing: ${({ theme }) => theme.letterSpacing};
+
+  @media ${({ theme }) => theme.device.mobileS} {
+    margin-top: 10px;
+  }
 `;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const AppContainer = styled.div`
-  position: relative;
   height: auto;
   min-height: 100vh;
   overflow: hidden;
@@ -18,7 +17,11 @@ export const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px 40px 0 40px;
+  margin: 20px 20px 0 20px;
+
+  @media ${({ theme }) => theme.device.tablet} {
+    margin: 40px 40px 0 40px;
+  }
 
   @media ${({ theme }) => theme.device.laptop} {
     grid-area: header;
@@ -37,8 +40,11 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const MainContainer = styled.main`
-  padding: 78px 40px 0 40px;
+  padding: 78px 20px 0 20px;
 
+  @media ${({ theme }) => theme.device.laptop} {
+    padding: 78px 40px 0 40px;
+  }
   @media ${({ theme }) => theme.device.laptop} {
     grid-area: main;
   }
@@ -49,18 +55,20 @@ export const MainContainer = styled.main`
 `;
 
 export const AsideContainer = styled.aside<{ isOpen: boolean }>`
-  position: absolute;
+  position: fixed;
+  top: 0;
+  right: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+  width: 100%;
   z-index: 2;
   height: 100%;
-  padding: 20px 40px;
+  padding: 0 20px;
   background-color: ${({ theme }) => theme.colors.background.secondary};
   transition: all 0.2s ease-in-out;
   overflow: auto;
 
   @media ${({ theme }) => theme.device.tablet} {
-    top: 0;
-    right: ${({ isOpen }) => (isOpen ? '0' : '-500px')};
     width: 480px;
+    padding: 20px 40px;
   }
 
   @media ${({ theme }) => theme.device.laptop} {
@@ -107,7 +115,7 @@ export const TextContainer = styled.p`
 export const OpenBarsButton = styled.button<{ isOpen: boolean }>`
   display: flex;
   background-color: transparent;
-  padding: 0 5px;
+  padding: 0;
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.regular};
   opacity: ${({ isOpen }) => (isOpen ? '0' : '1')};
@@ -138,8 +146,8 @@ export const OpenBarsButton = styled.button<{ isOpen: boolean }>`
 export const CloseBarsButton = styled.button`
   display: flex;
   background-color: transparent;
-  margin: 20px 0 20px auto;
-  padding: 0 5px;
+  margin: 20px 0 40px auto;
+  padding: 0;
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.regular};
   color: ${({ theme }) => theme.colors.text.secondary};
@@ -160,13 +168,17 @@ export const CloseBarsButton = styled.button`
     margin-right: 10px;
   }
 
+  @media ${({ theme }) => theme.device.tablet} {
+    margin: 20px 0 20px auto;
+  }
+
   @media ${({ theme }) => theme.device.laptop} {
     display: none;
   }
 `;
 
 export const AsideBackground = styled.div<{ isOpen: boolean }>`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
