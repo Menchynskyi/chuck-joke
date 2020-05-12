@@ -42,9 +42,10 @@ export const HeaderTitle = styled.h1`
 export const MainContainer = styled.main`
   padding: 78px 20px 0 20px;
 
-  @media ${({ theme }) => theme.device.laptop} {
+  @media ${({ theme }) => theme.device.tablet} {
     padding: 78px 40px 0 40px;
   }
+
   @media ${({ theme }) => theme.device.laptop} {
     grid-area: main;
   }
