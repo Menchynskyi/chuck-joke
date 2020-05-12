@@ -16,12 +16,12 @@ import { useJokeForm } from './hooks';
 export const JokeForm = () => {
   const {
     formState,
-    errorMessage,
     handleSubmit,
     handleRadioChange,
     handleCategoryChange,
     handleSearchChange,
     activeRadio,
+    errorMessage,
     tooltipMessage,
     isDisabled,
   } = useJokeForm();
@@ -74,7 +74,7 @@ export const JokeForm = () => {
       </LabelStyled>
       {isByCategory && (
         <CategoriesList>
-          {renderCategories(formState.categories)}
+          {renderCategories(formState.categoriesList)}
         </CategoriesList>
       )}
       <LabelStyled isChecked={isBySearch} htmlFor="search">

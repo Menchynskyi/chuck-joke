@@ -3,4 +3,5 @@ export {
   getJokeByCategory,
   getJokeBySearch,
   fetchCategories,
+  updateFavouriteJokes,
 } from './jokes';

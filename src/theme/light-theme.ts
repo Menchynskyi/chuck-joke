@@ -7,6 +7,7 @@ export const lightTheme: DefaultTheme = {
     background: {
       primary: '#FFFFFF',
       secondary: '#F8F8F8',
+      transparent: 'rgba(0, 0, 0, 0.3)',
     },
     text: {
       primary: '#333333',
@@ -32,7 +33,10 @@ export const lightTheme: DefaultTheme = {
       extraLarge: '18px',
     },
   },
-  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+  boxShadow: {
+    main: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    focus: '0px 0px 2px 2px #8EA7FF',
+  },
   borderRadius: {
     small: '6px',
     regular: '10px',

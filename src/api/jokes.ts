@@ -12,8 +12,7 @@ export const getRandomJoke = async (
   dispatch({ type: 'startFetching' });
   try {
     const { data } = await axios.get(`${apiUrl}random`);
-    const isLiked = favouriteList.some(({ id }) => id === data.id);
-    const joke = transformJoke(data, isLiked);
+    const joke = transformJoke(data, favouriteList);
     dispatch({ type: 'getRandomJoke', payload: joke });
   } catch (error) {
     dispatch({ type: 'errorFetching' });
@@ -30,8 +29,7 @@ export const getJokeByCategory = async (
   dispatch({ type: 'startFetching' });
   try {
     const { data } = await axios.get(`${apiUrl}random?category=${category}`);
-    const isLiked = favouriteList.some(({ id }) => id === data.id);
-    const joke = transformJoke(data, isLiked);
+    const joke = transformJoke(data, favouriteList);
     dispatch({ type: 'getRandomJoke', payload: joke });
   } catch (error) {
     dispatch({ type: 'errorFetching' });
@@ -49,8 +47,7 @@ export const getJokeBySearch = async (
   try {
     const { data } = await axios.get(`${apiUrl}search?query=${searchInput}`);
     const jokeList: Joke[] = data.result.map((joke: ApiJoke) => {
-      const isLiked = favouriteList.some(({ id }) => id === joke.id);
-      return transformJoke(joke, isLiked);
+      return transformJoke(joke, favouriteList);
     });
     const shortJokeList = jokeList.slice(0, 5);
     dispatch({ type: 'getJokesBySearch', payload: shortJokeList });
@@ -58,6 +55,26 @@ export const getJokeBySearch = async (
     dispatch({ type: 'errorFetching' });
     throw new Error(error.message);
   }
+};
+
+export const getJokeById = async (jokeId: string) => {
+  try {
+    const { data } = await axios.get(`${apiUrl}${jokeId}`);
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const updateFavouriteJokes = async (
+  dispatch: React.Dispatch<Action>,
+  favouriteList: Joke[]
+) => {
+  const data: ApiJoke[] = await Promise.all(
+    favouriteList.map(({ id }) => getJokeById(id))
+  );
+  const updatedFavouriteList = data.map((joke) => transformJoke(joke));
+  dispatch({ type: 'updateFavouriteJokes', payload: updatedFavouriteList });
 };
 
 export const fetchCategories = async () => {

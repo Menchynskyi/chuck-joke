@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { JokesProvider } from './contexts';
 import { JokeList, FavouriteList, JokeForm } from './components';
+import { BarsIcon, CloseIcon } from './images';
 import {
+  AppContainer,
   MainContainer,
   AsideContainer,
   HeaderTitle,
@@ -9,26 +11,51 @@ import {
   SectionTitle,
   TextContainer,
   HeaderStyled,
+  OpenBarsButton,
+  CloseBarsButton,
+  AsideBackground,
+  SectionStyled,
 } from './AppStyled';
 
 export const App: React.FC = () => {
+  const [barsIsOpen, setBarsIsOpen] = useState(false);
+
+  const handleBarsOpen = () => {
+    setBarsIsOpen(true);
+  };
+
+  const handleBarsClose = () => {
+    setBarsIsOpen(false);
+  };
+
   return (
     <JokesProvider>
-      <HeaderStyled>
-        <HeaderTitle>MSI 2020</HeaderTitle>
-      </HeaderStyled>
-      <MainContainer>
-        <section>
-          <SectionTitle>Hey!</SectionTitle>
-          <TextContainer>Let’s try to find a joke for you:</TextContainer>
-          <JokeForm />
-          <JokeList />
-        </section>
-      </MainContainer>
-      <AsideContainer>
-        <AsideTitle>Favourite</AsideTitle>
-        <FavouriteList />
-      </AsideContainer>
+      <AppContainer>
+        <HeaderStyled>
+          <HeaderTitle>MSI 2020</HeaderTitle>
+          <OpenBarsButton isOpen={barsIsOpen} onClick={handleBarsOpen}>
+            <BarsIcon />
+            Favourite
+          </OpenBarsButton>
+        </HeaderStyled>
+        <MainContainer>
+          <SectionStyled>
+            <SectionTitle>Hey!</SectionTitle>
+            <TextContainer>Let’s try to find a joke for you:</TextContainer>
+            <JokeForm />
+            <JokeList />
+          </SectionStyled>
+        </MainContainer>
+        <AsideContainer isOpen={barsIsOpen}>
+          <AsideTitle>Favourite</AsideTitle>
+          <CloseBarsButton onClick={handleBarsClose}>
+            <CloseIcon />
+            Favourite
+          </CloseBarsButton>
+          <FavouriteList />
+        </AsideContainer>
+        <AsideBackground onClick={handleBarsClose} isOpen={barsIsOpen} />
+      </AppContainer>
     </JokesProvider>
   );
 };

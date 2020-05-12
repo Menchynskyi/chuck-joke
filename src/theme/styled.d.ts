@@ -6,6 +6,7 @@ declare module 'styled-components' {
       background: {
         primary: string;
         secondary: string;
+        transparent: string;
       };
       text: {
         primary: string;
@@ -33,7 +34,10 @@ declare module 'styled-components' {
       };
     };
     hoverOpacity: string;
-    boxShadow: string;
+    boxShadow: {
+      main: string;
+      focus: string;
+    };
     borderRadius: {
       small: string;
       regular: string;

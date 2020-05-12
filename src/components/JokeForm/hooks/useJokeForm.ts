@@ -12,7 +12,7 @@ type JokeSearchType = 'random' | 'category' | 'search';
 type FormState = {
   type: JokeSearchType;
   category: string;
-  categories: string[];
+  categoriesList: string[];
   search: string;
 };
 
@@ -20,7 +20,7 @@ export const useJokeForm = () => {
   const [formState, setFormState] = useState<FormState>({
     type: 'random',
     category: '',
-    categories: [],
+    categoriesList: [],
     search: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
@@ -29,8 +29,8 @@ export const useJokeForm = () => {
   const { favouriteList } = useJokesState();
 
   useEffect(() => {
-    fetchCategories().then((categories) => {
-      setFormState((prev) => ({ ...prev, categories }));
+    fetchCategories().then((categoriesList) => {
+      setFormState((prev) => ({ ...prev, categoriesList }));
     });
   }, []);
 
