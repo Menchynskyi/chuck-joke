@@ -83,6 +83,7 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
   color: ${({ theme }) => theme.colors.background.primary};
   line-height: 1.375em;
   transition: all 0.2s;
+  user-select: none;
 
   &:hover {
     cursor: ${({ disabled }) => !disabled && 'pointer'};
@@ -177,6 +178,7 @@ export const CategoryButton = styled.button<CategoryButtonProps>`
   text-transform: uppercase;
   line-height: 1.33em;
   letter-spacing: ${({ theme }) => theme.letterSpacing};
+  user-select: none;
 
   &:hover {
     cursor: pointer;
