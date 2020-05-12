@@ -83,6 +83,7 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
   color: ${({ theme }) => theme.colors.background.primary};
   line-height: 1.375em;
   transition: all 0.2s;
+  user-select: none;
 
   &:hover {
     cursor: ${({ disabled }) => !disabled && 'pointer'};
@@ -124,7 +125,7 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
 
   &:focus {
     outline: none;
-    box-shadow: ${({ theme }) => theme.boxShadow.focus};
+    box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.15);
   }
 `;
 
@@ -177,6 +178,7 @@ export const CategoryButton = styled.button<CategoryButtonProps>`
   text-transform: uppercase;
   line-height: 1.33em;
   letter-spacing: ${({ theme }) => theme.letterSpacing};
+  user-select: none;
 
   &:hover {
     cursor: pointer;

@@ -1,7 +1,7 @@
 import { ApiJoke, Joke } from '../types';
 
 export const calculateDateDiff = (currentDate: number, lastUpdate: string) => {
-  const lastUpdateDate = new Date(lastUpdate.replace(/\s/, 'T'));
+  const lastUpdateDate = new Date(`${lastUpdate.replace(/\s/, 'T')}Z`);
   const difference = Math.floor(
     (currentDate - Number(lastUpdateDate)) / (1000 * 60 * 60)
   );

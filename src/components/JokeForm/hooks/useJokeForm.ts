@@ -87,13 +87,13 @@ export const useJokeForm = () => {
   };
 
   const tooltipMessage =
-    formState.type === 'category' && !formState.category
+    activeRadio.isByCategory && !formState.category
       ? 'Choose category'
       : 'Search is required';
 
   const isDisabled =
-    (formState.type === 'category' && !formState.category) ||
-    (formState.type === 'search' && !formState.search);
+    (activeRadio.isByCategory && !formState.category) ||
+    (activeRadio.isBySearch && !formState.search);
 
   return {
     formState,
