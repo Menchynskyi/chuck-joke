@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const FavouriteListStyled = styled.ul`
-  margin: 0;
+  margin: 0 0 40px 0;
   padding: 0;
 `;
 

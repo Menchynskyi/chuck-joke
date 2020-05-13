@@ -7,6 +7,18 @@ export const AppContainer = styled.div`
   min-height: 100vh;
   overflow: hidden;
 
+  & ::selection {
+    background-color: ${({ theme }) => theme.colors.blue.primary};
+    color: ${({ theme }) => theme.colors.background.primary};
+    text-shadow: none;
+  }
+
+  & ::-moz-selection {
+    background-color: ${({ theme }) => theme.colors.blue.primary};
+    color: ${({ theme }) => theme.colors.background.primary};
+    text-shadow: none;
+  }
+
   @media ${({ theme }) => theme.device.laptop} {
     display: grid;
     grid-template-areas: 'header aside' 'main aside';
@@ -19,10 +31,10 @@ export const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 20px 0 20px;
+  margin: 40px 40px 0 40px;
 
-  @media ${({ theme }) => theme.device.tablet} {
-    margin: 40px 40px 0 40px;
+  @media ${({ theme }) => theme.device.mobileS} {
+    margin: 20px 20px 0 20px;
   }
 
   @media ${({ theme }) => theme.device.laptop} {
@@ -42,10 +54,10 @@ export const HeaderTitle = styled.h1`
 `;
 
 export const MainContainer = styled.main`
-  padding: 78px 20px 0 20px;
+  padding: 78px 40px 0 40px;
 
-  @media ${({ theme }) => theme.device.tablet} {
-    padding: 78px 40px 0 40px;
+  @media ${({ theme }) => theme.device.mobileS} {
+    padding: 78px 20px 0 20px;
   }
 
   @media ${({ theme }) => theme.device.laptop} {
@@ -64,14 +76,17 @@ export const AsideContainer = styled.aside<BarsStatus>`
   width: 100%;
   z-index: 2;
   height: 100%;
-  padding: 0 20px;
+  padding: 20px 40px;
   background-color: ${({ theme }) => theme.colors.background.secondary};
   transition: all 0.2s ease-in-out;
   overflow: auto;
 
+  @media ${({ theme }) => theme.device.mobileS} {
+    padding: 0 20px;
+  }
+
   @media ${({ theme }) => theme.device.tablet} {
     width: 480px;
-    padding: 20px 40px;
   }
 
   @media ${({ theme }) => theme.device.laptop} {
