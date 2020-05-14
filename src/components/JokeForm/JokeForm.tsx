@@ -27,7 +27,7 @@ export const JokeForm: React.FC = () => {
   } = useJokeForm();
 
   const { isRandom, isByCategory, isBySearch } = activeRadio;
-  console.log('test');
+
   const renderCategories = (categoriesArray: string[]) => {
     return categoriesArray.map((category) => {
       const isActive = category === formState.category;
