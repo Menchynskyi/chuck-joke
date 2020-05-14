@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { JokesProvider } from './contexts';
 import { JokeList, FavouriteList, JokeForm } from './components';
-import { BarsIcon, CloseIcon } from './images';
+import { BarsIcon, CloseIcon } from './assets';
 import {
   AppContainer,
   MainContainer,
@@ -29,33 +28,31 @@ export const App: React.FC = () => {
   };
 
   return (
-    <JokesProvider>
-      <AppContainer>
-        <HeaderStyled>
-          <HeaderTitle>MSI 2020</HeaderTitle>
-          <OpenBarsButton isOpen={barsIsOpen} onClick={handleBarsOpen}>
-            <BarsIcon />
-            Favourite
-          </OpenBarsButton>
-        </HeaderStyled>
-        <MainContainer>
-          <SectionStyled>
-            <SectionTitle>Hey!</SectionTitle>
-            <TextContainer>Let’s try to find a joke for you:</TextContainer>
-            <JokeForm />
-            <JokeList />
-          </SectionStyled>
-        </MainContainer>
-        <AsideContainer isOpen={barsIsOpen}>
-          <AsideTitle>Favourite</AsideTitle>
-          <CloseBarsButton onClick={handleBarsClose}>
-            <CloseIcon />
-            Favourite
-          </CloseBarsButton>
-          <FavouriteList />
-        </AsideContainer>
-        <AsideBackground onClick={handleBarsClose} isOpen={barsIsOpen} />
-      </AppContainer>
-    </JokesProvider>
+    <AppContainer>
+      <HeaderStyled>
+        <HeaderTitle>MSI 2020</HeaderTitle>
+        <OpenBarsButton isOpen={barsIsOpen} onClick={handleBarsOpen}>
+          <BarsIcon />
+          Favourite
+        </OpenBarsButton>
+      </HeaderStyled>
+      <MainContainer>
+        <SectionStyled>
+          <SectionTitle>Hey!</SectionTitle>
+          <TextContainer>Let’s try to find a joke for you:</TextContainer>
+          <JokeForm />
+          <JokeList />
+        </SectionStyled>
+      </MainContainer>
+      <AsideContainer isOpen={barsIsOpen}>
+        <AsideTitle>Favourite</AsideTitle>
+        <CloseBarsButton onClick={handleBarsClose}>
+          <CloseIcon />
+          Favourite
+        </CloseBarsButton>
+        <FavouriteList />
+      </AsideContainer>
+      <AsideBackground onClick={handleBarsClose} isOpen={barsIsOpen} />
+    </AppContainer>
   );
 };

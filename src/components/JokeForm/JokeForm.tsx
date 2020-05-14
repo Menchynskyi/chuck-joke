@@ -13,7 +13,7 @@ import {
 import { Message } from '../Message';
 import { useJokeForm } from './hooks';
 
-export const JokeForm = () => {
+export const JokeForm: React.FC = () => {
   const {
     formState,
     handleSubmit,
@@ -27,13 +27,15 @@ export const JokeForm = () => {
   } = useJokeForm();
 
   const { isRandom, isByCategory, isBySearch } = activeRadio;
-
+  console.log('test');
   const renderCategories = (categoriesArray: string[]) => {
     return categoriesArray.map((category) => {
       const isActive = category === formState.category;
+
       const handleClick = () => {
         handleCategoryChange(category);
       };
+
       return (
         <CategoriesListItem key={category}>
           <CategoryButton

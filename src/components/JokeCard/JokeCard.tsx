@@ -14,7 +14,7 @@ import {
   JokeLink,
 } from './JokeCardStyled';
 import { LikeButton } from '../LikeButton';
-import { MessageIcon, LinkIcon } from '../../images';
+import { MessageIcon, LinkIcon } from '../../assets';
 import { useJokesDispatch } from '../../contexts';
 
 type JokeCardProps = {
