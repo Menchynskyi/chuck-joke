@@ -51,7 +51,7 @@ const hearthShakeAnimation = css`
 
 export const Button = styled.button<ButtonProps>`
   display: flex;
-  padding: 2px;
+  padding: 0;
   background-color: transparent;
   border: none;
   border-radius: 50%;
@@ -59,11 +59,14 @@ export const Button = styled.button<ButtonProps>`
 
   &:hover {
     cursor: pointer;
-    opacity: ${({ theme }) => theme.hoverOpacity};
+    background-color: rgba(255, 103, 103, 0.1);
+    box-shadow: 0px -1px 0px 10px rgba(255, 103, 103, 0.1);
   }
 
   &:focus {
     outline: none;
+    background-color: rgba(255, 103, 103, 0.2);
+    box-shadow: 0px -1px 0px 10px rgba(255, 103, 103, 0.2);
   }
 
   & svg {
