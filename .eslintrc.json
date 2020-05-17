@@ -57,6 +57,16 @@
         "react/jsx-props-no-spreading": "off",
         "@typescript-eslint/no-non-null-assertion": "off"
     },
+    "overrides": [
+        {
+            "files": [
+                "src/**/*.test.ts"
+            ],
+            "rules": {
+                "@typescript-eslint/no-explicit-any": "off"
+            }
+        }
+    ],
     "settings": {
         "import/resolver": {
             "node": {

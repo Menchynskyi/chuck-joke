@@ -13,6 +13,6 @@ export type ApiJoke = {
   url: string;
   value: string;
   created_at: string;
-  categories: [string];
+  categories: string[] | [];
   updated_at: string;
 };
