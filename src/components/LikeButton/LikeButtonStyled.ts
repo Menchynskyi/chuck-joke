@@ -51,12 +51,11 @@ const hearthShakeAnimation = css`
 
 export const Button = styled.button<ButtonProps>`
   display: flex;
-  padding: 0;
+  padding: 2px;
   background-color: transparent;
   border: none;
   border-radius: 50%;
   transition: all 0.2s;
-  overflow: visible;
 
   &:hover {
     cursor: pointer;
