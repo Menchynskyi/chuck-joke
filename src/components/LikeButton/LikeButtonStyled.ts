@@ -74,4 +74,16 @@ export const Button = styled.button<ButtonProps>`
       !!animation &&
       (animation === 'heartShake' ? hearthShakeAnimation : heartBeatAnimation)};
   }
+
+  @media ${({ theme }) => theme.device.mobileS} {
+    padding: 2px;
+
+    &:hover {
+      box-shadow: 0px -1px 0px 8px rgba(255, 103, 103, 0.1);
+    }
+
+    &:focus {
+      box-shadow: 0px -1px 0px 8px rgba(255, 103, 103, 0.2);
+    }
+  }
 `;

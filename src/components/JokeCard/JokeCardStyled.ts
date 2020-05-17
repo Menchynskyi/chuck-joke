@@ -57,6 +57,10 @@ export const IDContainer = styled.div`
   font-size: ${({ theme }) => theme.fontSize.text.extraSmall};
   line-height: 1.4em;
   font-weight: 500;
+
+  @media ${({ theme }) => theme.device.mobileS} {
+    padding-top: 8px;
+  }
 `;
 
 export const JokeLink = styled.a`
