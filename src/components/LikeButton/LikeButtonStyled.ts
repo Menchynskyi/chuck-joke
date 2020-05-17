@@ -56,6 +56,7 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   border-radius: 50%;
   transition: all 0.2s;
+  overflow: visible;
 
   &:hover {
     cursor: pointer;
