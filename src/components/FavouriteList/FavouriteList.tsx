@@ -1,22 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FavouriteListItem, FavouriteListStyled } from './FavouriteListStyled';
 import { JokeCard } from '../JokeCard';
-import { useJokesState, useJokesDispatch } from '../../contexts';
 import { Message } from '../Message';
-import { updateFavouriteJokes } from '../../api';
+import { useFavouriteList } from './hooks';
 
-export const FavouriteList = () => {
-  const dispatch = useJokesDispatch();
-  const { favouriteList } = useJokesState();
-
-  useEffect(() => {
-    updateFavouriteJokes(dispatch, favouriteList);
-    // eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favouriteList', JSON.stringify(favouriteList));
-  }, [favouriteList]);
+export const FavouriteList: React.FC = () => {
+  const favouriteList = useFavouriteList();
 
   if (favouriteList.length === 0) {
     return (

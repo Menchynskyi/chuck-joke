@@ -4,7 +4,6 @@ Web app for getting jokes about Chuck Norris.
 **Links** to the working application:
 * [chuck-joke.netlify.app](https://chuck-joke.netlify.app/)
 * [chuck-joke-app.herokuapp.com](https://chuck-joke-app.herokuapp.com/)
-***
 
 ## About App
 
@@ -20,7 +19,6 @@ Uses **[Chuck Norris API](https://api.chucknorris.io/)** to get jokes in JSON fo
 * Favourite jokes are visible in search result.
 
 Also there are *mobile* and *tablet* views.
-***
 
 ## To run locally
 1. Make sure you have [Git](https://git-scm.com/) and [Node](https://nodejs.org/en/) installed on your computer.

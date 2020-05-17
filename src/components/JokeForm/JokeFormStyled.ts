@@ -111,7 +111,7 @@ export const SubmitButton = styled.button<SubmitButtonProps>`
 
     &:hover:after {
       top: calc(100% + 6px);
-      left: 15px;
+      left: 17.5px;
       width: calc(100% - 40px);
       padding: 2.5px;
       background-color: ${({ theme }) => theme.colors.text.primary};

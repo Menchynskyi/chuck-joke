@@ -16,7 +16,7 @@ export const getRandomJoke = async (
     dispatch({ type: 'getRandomJoke', payload: joke });
   } catch (error) {
     dispatch({ type: 'errorFetching' });
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };
 
@@ -33,7 +33,7 @@ export const getJokeByCategory = async (
     dispatch({ type: 'getRandomJoke', payload: joke });
   } catch (error) {
     dispatch({ type: 'errorFetching' });
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };
 
@@ -53,7 +53,7 @@ export const getJokeBySearch = async (
     dispatch({ type: 'getJokesBySearch', payload: shortJokeList });
   } catch (error) {
     dispatch({ type: 'errorFetching' });
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };
 
@@ -62,7 +62,7 @@ export const getJokeById = async (jokeId: string) => {
     const { data } = await axios.get(`${apiUrl}${jokeId}`);
     return data;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };
 
@@ -70,11 +70,15 @@ export const updateFavouriteJokes = async (
   dispatch: React.Dispatch<Action>,
   favouriteList: Joke[]
 ) => {
-  const data: ApiJoke[] = await Promise.all(
-    favouriteList.map(({ id }) => getJokeById(id))
-  );
-  const updatedFavouriteList = data.map((joke) => transformJoke(joke));
-  dispatch({ type: 'updateFavouriteJokes', payload: updatedFavouriteList });
+  try {
+    const data: ApiJoke[] = await Promise.all(
+      favouriteList.map(({ id }) => getJokeById(id))
+    );
+    const updatedFavouriteList = data.map((joke) => transformJoke(joke));
+    dispatch({ type: 'updateFavouriteJokes', payload: updatedFavouriteList });
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export const fetchCategories = async () => {
@@ -82,6 +86,6 @@ export const fetchCategories = async () => {
     const { data } = await axios.get(`${apiUrl}categories`);
     return data as string[];
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };

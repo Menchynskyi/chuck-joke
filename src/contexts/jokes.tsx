@@ -5,7 +5,6 @@ type State = {
   jokeList: Joke[];
   favouriteList: Joke[];
   isError: boolean;
-  isLoading: boolean;
   isLoaded: boolean;
 };
 
@@ -30,7 +29,6 @@ const initialState: State = {
   favouriteList: JSON.parse(localStorage.getItem('favouriteList') || '[]'),
   isError: false,
   isLoaded: false,
-  isLoading: false,
 };
 
 const jokesReducer = (state: State, action: Action) => {
@@ -39,7 +37,6 @@ const jokesReducer = (state: State, action: Action) => {
       return {
         ...state,
         isLoaded: true,
-        isLoading: false,
         isError: false,
         jokeList: [action.payload],
       };
@@ -48,7 +45,6 @@ const jokesReducer = (state: State, action: Action) => {
       return {
         ...state,
         isLoaded: true,
-        isLoading: false,
         isError: false,
         jokeList: action.payload,
       };
@@ -62,7 +58,7 @@ const jokesReducer = (state: State, action: Action) => {
     case 'startFetching': {
       return {
         ...state,
-        isLoading: true,
+        isLoaded: false,
       };
     }
     case 'errorFetching': {
