@@ -2,7 +2,7 @@ export type Joke = {
   id: string;
   text: string;
   url: string;
-  updateTime: number;
+  updateTime: number | null;
   isLiked: boolean;
   category?: string;
 };

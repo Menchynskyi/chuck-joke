@@ -2,8 +2,23 @@ import { transformJoke, calculateDateDiff } from '.';
 import { apiJoke, transformedJoke, favouriteList } from '../__mocks__';
 
 describe('Calculate date difference function:', () => {
-  it('should return number of hours', () => {
-    // expect(calculateDateDiff(Date.now(), '')).toBe()
+  it('should return correct number of difference in hours', () => {
+    const earlierDate = '2020-05-17 15:42:19.576875';
+    const laterDate = new Date(
+      'Sun May 17 2020 20:43:19 GMT+0300 (Eastern European Summer Time)'
+    );
+
+    expect(calculateDateDiff(laterDate, earlierDate)).toBe(2);
+  });
+
+  it('should return null if date format is not correct', () => {
+    const earlierDate = '2020051715:42:19.576875';
+    const laterDate = new Date(
+      'Sun May 17 2020 20:43:19 GMT+0300 (Eastern European Summer Time)'
+    );
+
+    expect(calculateDateDiff(laterDate, earlierDate)).toBe(null);
+    expect(calculateDateDiff(laterDate, earlierDate)).toBeFalsy();
   });
 });
 
