@@ -5,7 +5,7 @@ import { transformedJoke } from '../../__mocks__';
 import { JokesProvider } from '../../contexts';
 
 describe('JokeCard component', () => {
-  it('should renders without crashing', () => {
+  it('should render without crashing', () => {
     const wrapper = shallow(
       <JokesProvider>
         <JokeCard joke={transformedJoke} />

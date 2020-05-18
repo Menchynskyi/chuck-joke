@@ -4,7 +4,7 @@ import { JokeForm } from '.';
 import { JokesProvider } from '../../contexts';
 
 describe('JokeForm component', () => {
-  it('should renders without crashing', () => {
+  it('should render without crashing', () => {
     const wrapper = shallow(
       <JokesProvider>
         <JokeForm />

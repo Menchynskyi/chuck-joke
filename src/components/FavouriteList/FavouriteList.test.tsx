@@ -4,7 +4,7 @@ import { FavouriteList } from '.';
 import { JokesProvider } from '../../contexts';
 
 describe('FavouriteList component', () => {
-  it('should renders without crashing', () => {
+  it('should render without crashing', () => {
     const wrapper = shallow(
       <JokesProvider>
         <FavouriteList />

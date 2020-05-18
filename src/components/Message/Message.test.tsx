@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Message } from '.';
 
 describe('Message component', () => {
-  it('should renders without crashing', () => {
+  it('should render without crashing', () => {
     const wrapper = shallow(<Message />);
     expect(wrapper.exists()).toBe(true);
   });
