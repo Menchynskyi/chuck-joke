@@ -60,7 +60,7 @@
     "overrides": [
         {
             "files": [
-                "src/**/*.test.ts"
+                "src/**/*.test.+(ts|tsx)"
             ],
             "rules": {
                 "@typescript-eslint/no-explicit-any": "off"

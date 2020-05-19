@@ -47,6 +47,32 @@ export const favouriteList = [
   },
 ];
 
+export const jokeList = [
+  {
+    category: 'explicit',
+    id: 'e82_skt1twatoavnakhafg',
+    isLiked: false,
+    text: `Chuck Norris did not "lose" his virginity, he stalked it and then destroyed it with extreme prejudice.`,
+    updateTime: 3194,
+    url: 'https://api.chucknorris.io/jokes/e82_skt1twatoavnakhafg',
+  },
+  {
+    id: 'odBNjYkiREyyu3cWzD-ldQ',
+    isLiked: false,
+    text:
+      'Chuck Norris got the most kills in a battle ground without no pvp gear or weapon',
+    updateTime: 3194,
+    url: 'https://api.chucknorris.io/jokes/odBNjYkiREyyu3cWzD-ldQ',
+  },
+  {
+    id: 'ALSp4SlnTbuOEG-YVGPAxQ',
+    isLiked: true,
+    text: "Chuck Norris doesn't push the envelope. He wipes his ass with it.",
+    updateTime: 3194,
+    url: 'https://api.chucknorris.io/jokes/ALSp4SlnTbuOEG-YVGPAxQ',
+  },
+];
+
 export const categoriesList = [
   'animal',
   'career',

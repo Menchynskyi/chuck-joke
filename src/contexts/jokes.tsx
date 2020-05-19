@@ -17,14 +17,14 @@ export type Action =
   | { type: 'likeJoke'; payload: Joke }
   | { type: 'dislikeJoke'; payload: Joke };
 
-type JokesContextState = {
+export type JokesContextState = {
   state: State;
   dispatch: React.Dispatch<Action>;
 };
 
 type JokesProviderProps = { children: React.ReactNode };
 
-const initialState: State = {
+export const initialState: State = {
   jokeList: [],
   favouriteList: JSON.parse(localStorage.getItem('favouriteList') || '[]'),
   isError: false,
