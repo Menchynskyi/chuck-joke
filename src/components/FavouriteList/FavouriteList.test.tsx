@@ -4,6 +4,8 @@ import { FavouriteList } from '.';
 import { Message } from '../Message';
 import { JokesProvider } from '../../contexts';
 import { Theme } from '../../theme';
+import { updateFavouriteJokes } from '../../api';
+import { favouriteList } from '../../__mocks__';
 
 describe('FavouriteList component', () => {
   it('should render without crashing', () => {
@@ -24,6 +26,9 @@ describe('FavouriteList component', () => {
       </Theme>
     );
     expect(wrapper.find(Message).exists()).toBe(true);
+    expect(wrapper.find(Message).text()).toContain(
+      `You don't have any favourite jokes yet.`
+    );
     expect(wrapper.find('ul').exists()).toBe(false);
   });
 });
