@@ -17,7 +17,7 @@ describe('JokeList component', () => {
         <JokeList />
       </JokesProvider>
     );
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.find(JokeList).exists()).toBe(true);
   });
 
   it('should render correct number of jokes from context', () => {

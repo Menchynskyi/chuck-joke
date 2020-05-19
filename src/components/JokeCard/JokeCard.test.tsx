@@ -11,6 +11,6 @@ describe('JokeCard component', () => {
         <JokeCard joke={transformedJoke} />
       </JokesProvider>
     );
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.find(JokeCard).exists()).toBe(true);
   });
 });

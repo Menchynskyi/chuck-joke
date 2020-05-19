@@ -10,6 +10,6 @@ describe('JokeForm component', () => {
         <JokeForm />
       </JokesProvider>
     );
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.find(JokeForm).exists()).toBe(true);
   });
 });
