@@ -15,9 +15,12 @@ import {
   AsideBackground,
   SectionStyled,
 } from './AppStyled';
+import { useLockBodyScroll } from './hooks';
 
 export const App: React.FC = () => {
   const [barsIsOpen, setBarsIsOpen] = useState(false);
+
+  useLockBodyScroll(barsIsOpen);
 
   const handleBarsOpen = () => {
     setBarsIsOpen(true);
