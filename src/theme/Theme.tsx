@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.text.primary};
   }
 
-  html {
+  body {
     overflow-y: scroll;
   }
 `;

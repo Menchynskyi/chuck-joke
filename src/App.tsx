@@ -15,9 +15,12 @@ import {
   AsideBackground,
   SectionStyled,
 } from './AppStyled';
+import { useLockBodyScroll } from './hooks';
 
 export const App: React.FC = () => {
   const [barsIsOpen, setBarsIsOpen] = useState(false);
+
+  useLockBodyScroll(barsIsOpen);
 
   const handleBarsOpen = () => {
     setBarsIsOpen(true);
@@ -30,7 +33,7 @@ export const App: React.FC = () => {
   return (
     <AppContainer>
       <HeaderStyled>
-        <HeaderTitle>MSI 2020</HeaderTitle>
+        <HeaderTitle>Chuck Joke</HeaderTitle>
         <OpenBarsButton isOpen={barsIsOpen} onClick={handleBarsOpen}>
           <BarsIcon />
           Favourite
